@@ -1,0 +1,464 @@
+[
+  {
+    "id": "thylacine",
+    "nameZh": "袋狼",
+    "nameEn": "Thylacine",
+    "scientificName": "Thylacinus cynocephalus",
+    "group": "extinct",
+    "groupLabel": "已灭绝 / 消失的挽歌",
+    "states": [
+      "tas"
+    ],
+    "dangerStatus": "EX",
+    "soundType": "ai_simulated",
+    "story": "它曾是塔斯马尼亚最著名的掠食者，条纹如虎，身形似犬。1936年9月7日，最后一只袋狼在霍巴特动物园安静地闭上了眼睛，从此这个物种只存在于泛黄的照片和模糊的影像里。",
+    "illustration": "/assets/species/thylacine-illustration.svg",
+    "photo": "/assets/species/thylacine-photo.jpg",
+    "audio": "/assets/audio/thylacine.mp3",
+    "color": "#8a7e6d",
+    "extinctYear": 1936,
+    "geoPoint": {
+      "lng": 146.72,
+      "lat": -41.58
+    }
+  },
+  {
+    "id": "pig_footed_bandicoot",
+    "nameZh": "豚足袋狸",
+    "nameEn": "Pig-footed Bandicoot",
+    "scientificName": "Chaeropus ecaudatus",
+    "group": "extinct",
+    "groupLabel": "已灭绝 / 消失的挽歌",
+    "states": [
+      "sa",
+      "wa",
+      "vic",
+      "nsw",
+      "nt"
+    ],
+    "dangerStatus": "EX",
+    "soundType": "ai_simulated",
+    "story": "这种小巧的有袋类动物有着像猪蹄一样的前脚，曾在澳大利亚干旱的内陆草原上轻盈奔跑。欧洲人带来的狐狸和猫让它在20世纪50年代彻底消失。",
+    "illustration": "/assets/species/pig-footed-bandicoot-illustration.svg",
+    "photo": "/assets/species/pig-footed-bandicoot-photo.jpg",
+    "audio": "/assets/audio/pig-footed-bandicoot.mp3",
+    "color": "#9e8c6c",
+    "extinctYear": 1950,
+    "geoPoint": {
+      "lng": 134.75,
+      "lat": -29.01
+    }
+  },
+  {
+    "id": "koala",
+    "nameZh": "树袋熊",
+    "nameEn": "Koala",
+    "scientificName": "Phascolarctos cinereus",
+    "group": "endangered",
+    "groupLabel": "濒危与脆弱的国宝",
+    "states": [
+      "qld",
+      "nsw",
+      "vic",
+      "sa"
+    ],
+    "dangerStatus": "EN",
+    "soundType": "real",
+    "story": "考拉每天睡20个小时，只吃桉树叶，看起来像是世界上最悠闲的生物。但栖息地的快速消失和频繁的山火，让这个澳大利亚的国民偶像正面临前所未有的生存危机。",
+    "illustration": "/assets/species/koala-illustration.svg",
+    "photo": "/assets/species/koala-photo.jpg",
+    "audio": "/assets/audio/koala.mp3",
+    "color": "#7da56c",
+    "geoPoint": {
+      "lng": 152.98,
+      "lat": -27.47
+    }
+  },
+  {
+    "id": "platypus",
+    "nameZh": "鸭嘴兽",
+    "nameEn": "Platypus",
+    "scientificName": "Ornithorhynchus anatinus",
+    "group": "endangered",
+    "groupLabel": "濒危与脆弱的国宝",
+    "states": [
+      "qld",
+      "nsw",
+      "vic",
+      "tas"
+    ],
+    "dangerStatus": "NT",
+    "soundType": "real",
+    "story": "鸭子的嘴、水獭的脚、河狸的尾巴——当第一张鸭嘴兽标本被送到英国时，科学家们以为这是一个恶作剧。这种会产卵的哺乳动物是进化史上最奇妙的存在之一。",
+    "illustration": "/assets/species/platypus-illustration.svg",
+    "photo": "/assets/species/platypus-photo.jpg",
+    "audio": "/assets/audio/platypus.mp3",
+    "color": "#78acc8",
+    "geoPoint": {
+      "lng": 145.48,
+      "lat": -17.27
+    }
+  },
+  {
+    "id": "tasmanian_devil",
+    "nameZh": "塔斯马尼亚袋獾",
+    "nameEn": "Tasmanian Devil",
+    "scientificName": "Sarcophilus harrisii",
+    "group": "endangered",
+    "groupLabel": "濒危与脆弱的国宝",
+    "states": [
+      "tas"
+    ],
+    "dangerStatus": "EN",
+    "soundType": "real",
+    "story": "它的叫声在夜晚听起来像恶魔的尖叫，这也是它名字的由来。作为世界上最大的肉食性有袋动物，袋獾正在与一种致命的面部肿瘤疾病抗争。",
+    "illustration": "/assets/species/tasmanian-devil-illustration.svg",
+    "photo": "/assets/species/tasmanian-devil-photo.jpg",
+    "audio": "/assets/audio/tasmanian-devil.mp3",
+    "color": "#5c5040",
+    "geoPoint": {
+      "lng": 146.65,
+      "lat": -42.05
+    }
+  },
+  {
+    "id": "bilby",
+    "nameZh": "大耳兔袋狸",
+    "nameEn": "Greater Bilby",
+    "scientificName": "Macrotis lagotis",
+    "group": "endangered",
+    "groupLabel": "濒危与脆弱的国宝",
+    "states": [
+      "wa",
+      "nt",
+      "qld"
+    ],
+    "dangerStatus": "VU",
+    "soundType": "real",
+    "story": "大耳朵、长鼻子、丝绸般的灰蓝色皮毛——兔袋狸是澳大利亚的复活节兔子替代者。它们在沙漠中挖掘螺旋形的洞穴，是生态系统中重要的土壤工程师。",
+    "illustration": "/assets/species/bilby-illustration.svg",
+    "photo": "/assets/species/bilby-photo.jpg",
+    "audio": "/assets/audio/bilby.mp3",
+    "color": "#96c8e4",
+    "geoPoint": {
+      "lng": 122.2,
+      "lat": -20.5
+    }
+  },
+  {
+    "id": "red_kangaroo",
+    "nameZh": "红袋鼠",
+    "nameEn": "Red Kangaroo",
+    "scientificName": "Osphranter rufus",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld",
+      "nsw"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "红袋鼠是世界上最大的有袋动物，一跳可以飞出9米远。它们遍布澳大利亚内陆，是这片红色大地上最具标志性的居民。",
+    "illustration": "/assets/species/red-kangaroo-illustration.svg",
+    "photo": "/assets/species/red-kangaroo-photo.jpg",
+    "audio": "/assets/audio/red-kangaroo.mp3",
+    "color": "#c97040",
+    "geoPoint": {
+      "lng": 121.5,
+      "lat": -27.5
+    }
+  },
+  {
+    "id": "emu",
+    "nameZh": "鸸鹋",
+    "nameEn": "Emu",
+    "scientificName": "Dromaius novaehollandiae",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld",
+      "nsw",
+      "vic"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "鸸鹋是世界第二大鸟，不会飞但跑得飞快。1932年澳大利亚军队曾对鸸鹋发动过一场'战争'——结果鸸鹋赢了。它们和袋鼠一起出现在澳大利亚国徽上。",
+    "illustration": "/assets/species/emu-illustration.svg",
+    "photo": "/assets/species/emu-photo.jpg",
+    "audio": "/assets/audio/emu.mp3",
+    "color": "#b8a88a",
+    "geoPoint": {
+      "lng": 118.5,
+      "lat": -30.5
+    }
+  },
+  {
+    "id": "echidna",
+    "nameZh": "短吻针鼹",
+    "nameEn": "Short-beaked Echidna",
+    "scientificName": "Tachyglossus aculeatus",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld",
+      "nsw",
+      "vic",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "针鼹和鸭嘴兽是世界上仅有的两种产卵哺乳动物。遇到危险时，它会把自己卷成一个刺球，像一个行走的仙人掌。它们分布在澳大利亚的每一个角落。",
+    "illustration": "/assets/species/echidna-illustration.svg",
+    "photo": "/assets/species/echidna-photo.jpg",
+    "audio": "/assets/audio/echidna.mp3",
+    "color": "#d4b98a",
+    "geoPoint": {
+      "lng": 116,
+      "lat": -33.5
+    }
+  },
+  {
+    "id": "kookaburra",
+    "nameZh": "笑翠鸟",
+    "nameEn": "Laughing Kookaburra",
+    "scientificName": "Dacelo novaeguineae",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "qld",
+      "nsw",
+      "vic",
+      "sa",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "每天清晨，笑翠鸟会用它标志性的'哈哈哈'大笑声唤醒整片丛林。这种声音已经成为澳大利亚的声音名片，在无数电影中被用作'丛林背景音'。",
+    "illustration": "/assets/species/kookaburra-illustration.svg",
+    "photo": "/assets/species/kookaburra-photo.jpg",
+    "audio": "/assets/audio/kookaburra.mp3",
+    "color": "#64ba9c",
+    "geoPoint": {
+      "lng": 145.77,
+      "lat": -16.92
+    }
+  },
+  {
+    "id": "frilled_lizard",
+    "nameZh": "伞蜥",
+    "nameEn": "Frilled-neck Lizard",
+    "scientificName": "Chlamydosaurus kingii",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "nt",
+      "qld",
+      "wa"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "受到威胁时，伞蜥会张开脖子上巨大的褶皱，像撑开一把伞，同时张大嘴巴发出嘶嘶声。这个戏剧性的防御姿态让它成为澳大利亚最上镜的爬行动物。",
+    "illustration": "/assets/species/frilled-lizard-illustration.svg",
+    "photo": "/assets/species/frilled-lizard-photo.jpg",
+    "audio": "/assets/audio/frilled-lizard.mp3",
+    "color": "#eba882",
+    "geoPoint": {
+      "lng": 132.8,
+      "lat": -12.7
+    }
+  },
+  {
+    "id": "cane_toad",
+    "nameZh": "甘蔗蟾蜍",
+    "nameEn": "Cane Toad",
+    "scientificName": "Rhinella marina",
+    "group": "invasive",
+    "groupLabel": "外来入侵与扩张史",
+    "states": [
+      "qld",
+      "nsw",
+      "nt",
+      "wa"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "1935年，102只甘蔗蟾蜍被从夏威夷引入昆士兰来控制甘蔗害虫。它们没有吃害虫，却以惊人的速度向西扩张，如今已超过20亿只，成为澳大利亚最臭名昭著的入侵物种。",
+    "illustration": "/assets/species/cane-toad-illustration.svg",
+    "photo": "/assets/species/cane-toad-photo.jpg",
+    "audio": "/assets/audio/cane-toad.mp3",
+    "color": "#7a6b52",
+    "introYear": 1935,
+    "geoPoint": {
+      "lng": 145.75,
+      "lat": -17
+    }
+  },
+  {
+    "id": "european_rabbit",
+    "nameZh": "欧洲野兔",
+    "nameEn": "European Rabbit",
+    "scientificName": "Oryctolagus cuniculus",
+    "group": "invasive",
+    "groupLabel": "外来入侵与扩张史",
+    "states": [
+      "vic",
+      "nsw",
+      "sa",
+      "wa",
+      "qld",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "1859年，一位英国移民在维多利亚州放出了24只兔子用于狩猎。十年后，兔子数量已达数百万。它们啃光了草地，挖空了土壤，成为澳大利亚生态史上最具破坏力的入侵者之一。",
+    "illustration": "/assets/species/european-rabbit-illustration.svg",
+    "photo": "/assets/species/european-rabbit-photo.jpg",
+    "audio": "/assets/audio/european-rabbit.mp3",
+    "color": "#d1c4a9",
+    "introYear": 1859,
+    "geoPoint": {
+      "lng": 144.7,
+      "lat": -36.8
+    }
+  },
+  {
+    "id": "dingo",
+    "nameZh": "澳洲野犬",
+    "nameEn": "Dingo",
+    "scientificName": "Canis lupus dingo",
+    "group": "invasive",
+    "groupLabel": "外来入侵与扩张史",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld",
+      "nsw"
+    ],
+    "dangerStatus": "VU",
+    "soundType": "real",
+    "story": "大约4000年前，野犬随东南亚航海者来到澳大利亚。它们是澳大利亚大陆上最大的陆地掠食者，与原住民文化有着深厚的联系，但也因捕食家畜而备受争议。",
+    "illustration": "/assets/species/dingo-illustration.svg",
+    "photo": "/assets/species/dingo-photo.jpg",
+    "audio": "/assets/audio/dingo.mp3",
+    "color": "#e0c99a",
+    "geoPoint": {
+      "lng": 122,
+      "lat": -18.5
+    }
+  },
+  {
+    "id": "red_fox",
+    "nameZh": "赤狐",
+    "nameEn": "Red Fox",
+    "scientificName": "Vulpes vulpes",
+    "group": "invasive",
+    "groupLabel": "外来入侵与扩张史",
+    "states": [
+      "vic",
+      "nsw",
+      "sa",
+      "wa",
+      "qld",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "1855年为了狩猎运动被引入澳大利亚的赤狐，迅速成为本土小型哺乳动物的噩梦。它们是导致多种澳大利亚本土物种灭绝的主要原因之一。",
+    "illustration": "/assets/species/red-fox-illustration.svg",
+    "photo": "/assets/species/red-fox-photo.jpg",
+    "audio": "/assets/audio/red-fox.mp3",
+    "color": "#c97040",
+    "introYear": 1855,
+    "geoPoint": {
+      "lng": 145.5,
+      "lat": -37.1
+    }
+  },
+  {
+    "id": "southern_right_whale",
+    "nameZh": "南露脊鲸",
+    "nameEn": "Southern Right Whale",
+    "scientificName": "Eubalaena australis",
+    "group": "marine",
+    "groupLabel": "海洋与迁徙的旅者",
+    "states": [
+      "sa",
+      "vic",
+      "wa",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "它们被叫做'对的鲸鱼'，因为捕鲸者认为它们游得慢、油脂多、死后会浮起来——是'正确的'捕猎目标。经历了近乎灭绝的浩劫后，南露脊鲸正在缓慢恢复。",
+    "illustration": "/assets/species/southern-right-whale-illustration.svg",
+    "photo": "/assets/species/southern-right-whale-photo.jpg",
+    "audio": "/assets/audio/southern-right-whale.mp3",
+    "color": "#6cb3d9",
+    "migratory": true,
+    "geoPoint": {
+      "lng": 133.7,
+      "lat": -32.13
+    }
+  },
+  {
+    "id": "great_white_shark",
+    "nameZh": "大白鲨",
+    "nameEn": "Great White Shark",
+    "scientificName": "Carcharodon carcharias",
+    "group": "marine",
+    "groupLabel": "海洋与迁徙的旅者",
+    "states": [
+      "sa",
+      "nsw",
+      "vic",
+      "wa"
+    ],
+    "dangerStatus": "VU",
+    "soundType": "ai_simulated",
+    "story": "大白鲨是海洋中的顶级掠食者，可以感知数公里外的一滴血。在澳大利亚水域，它们沿着海岸线巡游，维持着海洋生态系统的平衡。",
+    "illustration": "/assets/species/great-white-shark-illustration.svg",
+    "photo": "/assets/species/great-white-shark-photo.jpg",
+    "audio": "/assets/audio/great-white-shark.mp3",
+    "color": "#9ec3d8",
+    "migratory": true,
+    "geoPoint": {
+      "lng": 137.6,
+      "lat": -34.6
+    }
+  },
+  {
+    "id": "green_sea_turtle",
+    "nameZh": "绿海龟",
+    "nameEn": "Green Sea Turtle",
+    "scientificName": "Chelonia mydas",
+    "group": "marine",
+    "groupLabel": "海洋与迁徙的旅者",
+    "states": [
+      "qld",
+      "wa",
+      "nt"
+    ],
+    "dangerStatus": "EN",
+    "soundType": "ai_simulated",
+    "story": "绿海龟每年会游数千公里回到出生的海滩产卵。大堡礁是它们最重要的栖息地之一，但海水温度上升正在威胁着这些古老旅者的未来。",
+    "illustration": "/assets/species/green-sea-turtle-illustration.svg",
+    "photo": "/assets/species/green-sea-turtle-photo.jpg",
+    "audio": "/assets/audio/green-sea-turtle.mp3",
+    "color": "#64ba9c",
+    "migratory": true,
+    "geoPoint": {
+      "lng": 147.33,
+      "lat": -20.27
+    }
+  }
+]

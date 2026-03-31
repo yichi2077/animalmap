@@ -1,0 +1,110 @@
+{
+  "thylacine": {
+    "src": "/assets/audio/thylacine.mp3",
+    "type": "ai_simulated",
+    "label": "AI 模拟 · 非真实历史录音",
+    "description": "基于近缘物种声学特征的 AI 推测性模拟，用于科普体验"
+  },
+  "pig_footed_bandicoot": {
+    "src": "/assets/audio/pig-footed-bandicoot.mp3",
+    "type": "ai_simulated",
+    "label": "AI 模拟 · 非真实历史录音",
+    "description": "基于袋狸科声学特征的 AI 推测性模拟，用于科普体验"
+  },
+  "koala": {
+    "src": "/assets/audio/koala.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "考拉的低沉吼叫声，通常在繁殖季节发出"
+  },
+  "platypus": {
+    "src": "/assets/audio/platypus.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "鸭嘴兽在水下发出的轻柔咔嗒声"
+  },
+  "tasmanian_devil": {
+    "src": "/assets/audio/tasmanian-devil.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "袋獾标志性的尖锐嘶吼声"
+  },
+  "bilby": {
+    "src": "/assets/audio/bilby.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "兔袋狸轻柔的吱吱声"
+  },
+  "red_kangaroo": {
+    "src": "/assets/audio/red-kangaroo.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "红袋鼠的咕噜声和跳跃时的沉闷声响"
+  },
+  "emu": {
+    "src": "/assets/audio/emu.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "鸸鹋深沉的鼓声般叫声"
+  },
+  "echidna": {
+    "src": "/assets/audio/echidna.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "针鼹轻柔的喷气声"
+  },
+  "kookaburra": {
+    "src": "/assets/audio/kookaburra.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "笑翠鸟标志性的大笑声"
+  },
+  "frilled_lizard": {
+    "src": "/assets/audio/frilled-lizard.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "伞蜥受威胁时的嘶嘶声"
+  },
+  "cane_toad": {
+    "src": "/assets/audio/cane-toad.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "甘蔗蟾蜍持续的高频鸣叫"
+  },
+  "european_rabbit": {
+    "src": "/assets/audio/european-rabbit.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "欧洲野兔的跺脚警报声"
+  },
+  "dingo": {
+    "src": "/assets/audio/dingo.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "澳洲野犬的嚎叫声"
+  },
+  "red_fox": {
+    "src": "/assets/audio/red-fox.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "赤狐的尖锐叫声"
+  },
+  "southern_right_whale": {
+    "src": "/assets/audio/southern-right-whale.mp3",
+    "type": "real",
+    "label": "真实录音",
+    "description": "南露脊鲸的低频歌声"
+  },
+  "great_white_shark": {
+    "src": "/assets/audio/great-white-shark.mp3",
+    "type": "ai_simulated",
+    "label": "AI 模拟 · 用于科普体验",
+    "description": "基于水下声学环境的 AI 模拟，鲨鱼本身不发声"
+  },
+  "green_sea_turtle": {
+    "src": "/assets/audio/green-sea-turtle.mp3",
+    "type": "ai_simulated",
+    "label": "AI 模拟 · 用于科普体验",
+    "description": "基于海龟水下活动声学特征的 AI 模拟"
+  }
+}

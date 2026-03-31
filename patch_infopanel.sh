@@ -1,0 +1,1 @@
+sed -i '' -e '/const panelKicker/i\'\n'  const scrollRef = React.useRef<HTMLDivElement>(null);\n  React.useEffect(() => {\n    if (scrollRef.current) {\n      scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });\n    }\n  }, [selectedSpeciesId, focusRegionId]);\n' components/InfoPanel.tsx

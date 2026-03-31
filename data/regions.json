@@ -1,0 +1,90 @@
+[
+  {
+    "id": "nsw",
+    "nameZh": "新南威尔士州",
+    "nameEn": "New South Wales",
+    "abbr": "NSW",
+    "color": "#c8d9c0",
+    "center": {
+      "x": 548,
+      "y": 387
+    }
+  },
+  {
+    "id": "vic",
+    "nameZh": "维多利亚州",
+    "nameEn": "Victoria",
+    "abbr": "VIC",
+    "color": "#b8e0d2",
+    "center": {
+      "x": 484,
+      "y": 433
+    }
+  },
+  {
+    "id": "qld",
+    "nameZh": "昆士兰州",
+    "nameEn": "Queensland",
+    "abbr": "QLD",
+    "color": "#f5c8b0",
+    "center": {
+      "x": 506,
+      "y": 182
+    }
+  },
+  {
+    "id": "sa",
+    "nameZh": "南澳大利亚州",
+    "nameEn": "South Australia",
+    "abbr": "SA",
+    "color": "#e0c99a",
+    "center": {
+      "x": 364,
+      "y": 362
+    }
+  },
+  {
+    "id": "wa",
+    "nameZh": "西澳大利亚州",
+    "nameEn": "Western Australia",
+    "abbr": "WA",
+    "color": "#eddcba",
+    "center": {
+      "x": 181,
+      "y": 253
+    }
+  },
+  {
+    "id": "tas",
+    "nameZh": "塔斯马尼亚州",
+    "nameEn": "Tasmania",
+    "abbr": "TAS",
+    "color": "#c4dae8",
+    "center": {
+      "x": 487,
+      "y": 509
+    }
+  },
+  {
+    "id": "nt",
+    "nameZh": "北领地",
+    "nameEn": "Northern Territory",
+    "abbr": "NT",
+    "color": "#eba882",
+    "center": {
+      "x": 346,
+      "y": 160
+    }
+  },
+  {
+    "id": "act",
+    "nameZh": "首都领地",
+    "nameEn": "Australian Capital Territory",
+    "abbr": "ACT",
+    "color": "#a3bf96",
+    "center": {
+      "x": 530,
+      "y": 425
+    }
+  }
+]
