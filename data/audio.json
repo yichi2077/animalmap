@@ -1,110 +1,182 @@
 {
   "thylacine": {
-    "src": "/assets/audio/thylacine.mp3",
+    "src": "",
     "type": "ai_simulated",
     "label": "AI 模拟 · 非真实历史录音",
-    "description": "基于近缘物种声学特征的 AI 推测性模拟，用于科普体验"
+    "description": "基于近缘物种声学特征的 AI 推测性模拟，用于科普体验",
+    "availability": "ai_simulated",
+    "attribution": "AI 模拟 · 非真实历史录音 · 仅供科普体验",
+    "license": "AI 模拟 · 非真实录音",
+    "sourceUrl": ""
   },
   "pig_footed_bandicoot": {
-    "src": "/assets/audio/pig-footed-bandicoot.mp3",
+    "src": "",
     "type": "ai_simulated",
     "label": "AI 模拟 · 非真实历史录音",
-    "description": "基于袋狸科声学特征的 AI 推测性模拟，用于科普体验"
+    "description": "基于袋狸科声学特征的 AI 推测性模拟，用于科普体验",
+    "availability": "ai_simulated",
+    "attribution": "AI 模拟 · 非真实历史录音 · 仅供科普体验",
+    "license": "AI 模拟 · 非真实录音",
+    "sourceUrl": ""
   },
   "koala": {
     "src": "/assets/audio/koala.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "考拉的低沉吼叫声，通常在繁殖季节发出"
+    "description": "考拉的低沉吼叫声，通常在繁殖季节发出",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "platypus": {
     "src": "/assets/audio/platypus.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "鸭嘴兽在水下发出的轻柔咔嗒声"
+    "description": "鸭嘴兽在水下发出的轻柔咔嗒声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "tasmanian_devil": {
-    "src": "/assets/audio/tasmanian-devil.mp3",
+    "src": "/assets/audio/tasmanian_devil.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "袋獾标志性的尖锐嘶吼声"
+    "description": "袋獾标志性的尖锐嘶吼声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "bilby": {
     "src": "/assets/audio/bilby.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "兔袋狸轻柔的吱吱声"
+    "description": "兔袋狸轻柔的吱吱声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "red_kangaroo": {
-    "src": "/assets/audio/red-kangaroo.mp3",
+    "src": "/assets/audio/red_kangaroo.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "红袋鼠的咕噜声和跳跃时的沉闷声响"
+    "description": "红袋鼠的咕噜声和跳跃时的沉闷声响",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "emu": {
     "src": "/assets/audio/emu.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "鸸鹋深沉的鼓声般叫声"
+    "description": "鸸鹋深沉的鼓声般叫声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "echidna": {
     "src": "/assets/audio/echidna.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "针鼹轻柔的喷气声"
+    "description": "针鼹轻柔的喷气声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "kookaburra": {
     "src": "/assets/audio/kookaburra.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "笑翠鸟标志性的大笑声"
+    "description": "笑翠鸟标志性的大笑声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "frilled_lizard": {
-    "src": "/assets/audio/frilled-lizard.mp3",
+    "src": "/assets/audio/frilled_lizard.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "伞蜥受威胁时的嘶嘶声"
+    "description": "伞蜥受威胁时的嘶嘶声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "cane_toad": {
-    "src": "/assets/audio/cane-toad.mp3",
+    "src": "/assets/audio/cane_toad.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "甘蔗蟾蜍持续的高频鸣叫"
+    "description": "甘蔗蟾蜍持续的高频鸣叫",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "european_rabbit": {
-    "src": "/assets/audio/european-rabbit.mp3",
+    "src": "/assets/audio/european_rabbit.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "欧洲野兔的跺脚警报声"
+    "description": "欧洲野兔的跺脚警报声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "dingo": {
     "src": "/assets/audio/dingo.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "澳洲野犬的嚎叫声"
+    "description": "澳洲野犬的嚎叫声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "red_fox": {
-    "src": "/assets/audio/red-fox.mp3",
+    "src": "/assets/audio/red_fox.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "赤狐的尖锐叫声"
+    "description": "赤狐的尖锐叫声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "southern_right_whale": {
-    "src": "/assets/audio/southern-right-whale.mp3",
+    "src": "/assets/audio/southern_right_whale.mp3",
     "type": "real",
     "label": "真实录音",
-    "description": "南露脊鲸的低频歌声"
+    "description": "南露脊鲸的低频歌声",
+    "availability": "missing",
+    "attribution": "来源待确认（目标：xeno-canto 或 freesound CC 授权录音）",
+    "license": "待确认",
+    "sourceUrl": ""
   },
   "great_white_shark": {
-    "src": "/assets/audio/great-white-shark.mp3",
+    "src": "",
     "type": "ai_simulated",
     "label": "AI 模拟 · 用于科普体验",
-    "description": "基于水下声学环境的 AI 模拟，鲨鱼本身不发声"
+    "description": "基于水下声学环境的 AI 模拟，鲨鱼本身不发声",
+    "availability": "ai_simulated",
+    "attribution": "AI 模拟 · 非真实历史录音 · 仅供科普体验",
+    "license": "AI 模拟 · 非真实录音",
+    "sourceUrl": ""
   },
   "green_sea_turtle": {
-    "src": "/assets/audio/green-sea-turtle.mp3",
+    "src": "",
     "type": "ai_simulated",
     "label": "AI 模拟 · 用于科普体验",
-    "description": "基于海龟水下活动声学特征的 AI 模拟"
+    "description": "基于海龟水下活动声学特征的 AI 模拟",
+    "availability": "ai_simulated",
+    "attribution": "AI 模拟 · 非真实历史录音 · 仅供科普体验",
+    "license": "AI 模拟 · 非真实录音",
+    "sourceUrl": ""
   }
 }

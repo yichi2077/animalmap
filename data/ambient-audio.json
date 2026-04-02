@@ -1,0 +1,59 @@
+{
+  "zones": [
+    {
+      "id": "tropical_rainforest",
+      "label": "热带雨林",
+      "audioFile": "/assets/audio/ambient/tropical-rainforest.mp3",
+      "bounds": [
+        { "stateId": "qld", "latMin": -20, "latMax": -10, "lngMin": 143, "lngMax": 146 }
+      ]
+    },
+    {
+      "id": "coastal",
+      "label": "沿海",
+      "audioFile": "/assets/audio/ambient/coastal-waves.mp3",
+      "bounds": [
+        { "stateId": "nsw", "latMin": -38, "latMax": -28, "lngMin": 150, "lngMax": 154 },
+        { "stateId": "vic", "latMin": -39, "latMax": -37, "lngMin": 140, "lngMax": 150 },
+        { "stateId": "wa",  "latMin": -35, "latMax": -28, "lngMin": 113, "lngMax": 116 },
+        { "stateId": "sa",  "latMin": -38, "latMax": -33, "lngMin": 135, "lngMax": 139 },
+        { "stateId": "tas", "latMin": -44, "latMax": -40, "lngMin": 144, "lngMax": 149 }
+      ]
+    },
+    {
+      "id": "outback_desert",
+      "label": "内陆沙漠",
+      "audioFile": "/assets/audio/ambient/outback-desert.mp3",
+      "bounds": [
+        { "stateId": "nt", "latMin": -26, "latMax": -15, "lngMin": 129, "lngMax": 138 },
+        { "stateId": "wa", "latMin": -32, "latMax": -22, "lngMin": 118, "lngMax": 129 },
+        { "stateId": "sa", "latMin": -32, "latMax": -26, "lngMin": 130, "lngMax": 141 }
+      ]
+    },
+    {
+      "id": "temperate_forest",
+      "label": "温带森林",
+      "audioFile": "/assets/audio/ambient/temperate-forest.mp3",
+      "bounds": [
+        { "stateId": "tas", "latMin": -44, "latMax": -41, "lngMin": 144, "lngMax": 147 },
+        { "stateId": "vic", "latMin": -38, "latMax": -36, "lngMin": 146, "lngMax": 149 }
+      ]
+    },
+    {
+      "id": "savanna",
+      "label": "热带草原",
+      "audioFile": "/assets/audio/ambient/savanna.mp3",
+      "bounds": [
+        { "stateId": "qld", "latMin": -26, "latMax": -17, "lngMin": 138, "lngMax": 148 },
+        { "stateId": "nt",  "latMin": -15, "latMax": -11, "lngMin": 130, "lngMax": 136 }
+      ]
+    },
+    {
+      "id": "ocean",
+      "label": "海洋",
+      "audioFile": "/assets/audio/ambient/ocean-deep.mp3",
+      "bounds": []
+    }
+  ],
+  "fallbackZoneId": "outback_desert"
+}

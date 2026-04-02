@@ -1,130 +1,682 @@
 {
   "thylacine": [
-    { "year": 1770, "populationScore": 0.8, "distributionType": "stable", "narrative": "袋狼在塔斯马尼亚的森林和草原上自由游荡，是这片土地上的顶级掠食者。" },
-    { "year": 1788, "populationScore": 0.7, "distributionType": "stable", "narrative": "欧洲人到来前，袋狼仍在塔斯马尼亚广泛分布。" },
-    { "year": 1900, "populationScore": 0.3, "distributionType": "contraction", "narrative": "政府悬赏猎杀袋狼，数量急剧下降。" },
-    { "year": 1935, "populationScore": 0.02, "distributionType": "contraction", "narrative": "野外几乎已经看不到袋狼的身影。" },
-    { "year": 1936, "populationScore": 0, "distributionType": "extinction", "narrative": "最后一只袋狼「本杰明」在霍巴特动物园去世。" },
-    { "year": 2024, "populationScore": 0, "distributionType": "extinction", "narrative": "袋狼已灭绝近90年，但科学家正尝试用基因技术复活它。" }
+    {
+      "year": 1770,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "袋狼在塔斯马尼亚的森林和草原上自由游荡，是这片土地上的顶级掠食者。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "欧洲人到来前，袋狼仍在塔斯马尼亚广泛分布。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.3,
+      "distributionType": "contraction",
+      "narrative": "政府悬赏猎杀袋狼，数量急剧下降。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1935,
+      "populationScore": 0.02,
+      "distributionType": "contraction",
+      "narrative": "野外几乎已经看不到袋狼的身影。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1936,
+      "populationScore": 0,
+      "distributionType": "extinction",
+      "narrative": "最后一只袋狼「本杰明」在霍巴特动物园去世。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0,
+      "distributionType": "extinction",
+      "narrative": "袋狼已灭绝近90年，但科学家正尝试用基因技术复活它。",
+      "evidenceType": "contemporary"
+    }
   ],
   "pig_footed_bandicoot": [
-    { "year": 1770, "populationScore": 0.7, "distributionType": "stable", "narrative": "豚足袋狸在澳大利亚内陆的干旱草原上广泛分布。" },
-    { "year": 1788, "populationScore": 0.6, "distributionType": "stable", "narrative": "欧洲殖民前，豚足袋狸仍然常见。" },
-    { "year": 1900, "populationScore": 0.2, "distributionType": "contraction", "narrative": "狐狸和猫的引入让豚足袋狸数量骤降。" },
-    { "year": 1950, "populationScore": 0, "distributionType": "extinction", "narrative": "最后的确认记录消失，豚足袋狸被宣布灭绝。" },
-    { "year": 2024, "populationScore": 0, "distributionType": "extinction", "narrative": "豚足袋狸已从地球上永远消失。" }
+    {
+      "year": 1770,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "豚足袋狸在澳大利亚内陆的干旱草原上广泛分布。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.6,
+      "distributionType": "stable",
+      "narrative": "欧洲殖民前，豚足袋狸仍然常见。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.2,
+      "distributionType": "contraction",
+      "narrative": "狐狸和猫的引入让豚足袋狸数量骤降。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0,
+      "distributionType": "extinction",
+      "narrative": "最后的确认记录消失，豚足袋狸被宣布灭绝。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0,
+      "distributionType": "extinction",
+      "narrative": "豚足袋狸已从地球上永远消失。",
+      "evidenceType": "contemporary"
+    }
   ],
   "koala": [
-    { "year": 1770, "populationScore": 1.0, "distributionType": "stable", "narrative": "考拉在澳大利亚东部的桉树林中繁盛生活。" },
-    { "year": 1788, "populationScore": 0.95, "distributionType": "stable", "narrative": "殖民初期，考拉数量估计超过一千万只。" },
-    { "year": 1900, "populationScore": 0.4, "distributionType": "contraction", "narrative": "大规模皮毛贸易让考拉数量锐减。" },
-    { "year": 1950, "populationScore": 0.5, "distributionType": "recovery", "narrative": "保护法令开始生效，考拉数量缓慢恢复。" },
-    { "year": 2024, "populationScore": 0.35, "distributionType": "contraction", "narrative": "栖息地丧失和山火让考拉再次面临危机，2022年被列为濒危物种。" }
+    {
+      "year": 1770,
+      "populationScore": 1,
+      "distributionType": "stable",
+      "narrative": "考拉在澳大利亚东部的桉树林中繁盛生活。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.95,
+      "distributionType": "stable",
+      "narrative": "殖民初期，考拉数量估计超过一千万只。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.4,
+      "distributionType": "contraction",
+      "narrative": "大规模皮毛贸易让考拉数量锐减。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.5,
+      "distributionType": "recovery",
+      "narrative": "保护法令开始生效，考拉数量缓慢恢复。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.35,
+      "distributionType": "contraction",
+      "narrative": "栖息地丧失和山火让考拉再次面临危机，2022年被列为濒危物种。",
+      "evidenceType": "contemporary"
+    }
   ],
   "platypus": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "鸭嘴兽在东部的河流溪涧中安静生活。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "欧洲人第一次见到鸭嘴兽时，以为是恶作剧。" },
-    { "year": 1900, "populationScore": 0.6, "distributionType": "contraction", "narrative": "皮毛猎杀和栖息地破坏影响了鸭嘴兽种群。" },
-    { "year": 1950, "populationScore": 0.65, "distributionType": "stable", "narrative": "保护措施让鸭嘴兽种群趋于稳定。" },
-    { "year": 2024, "populationScore": 0.55, "distributionType": "contraction", "narrative": "干旱和水坝建设持续威胁鸭嘴兽的栖息地。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "鸭嘴兽在东部的河流溪涧中安静生活。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "欧洲人第一次见到鸭嘴兽时，以为是恶作剧。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.6,
+      "distributionType": "contraction",
+      "narrative": "皮毛猎杀和栖息地破坏影响了鸭嘴兽种群。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.65,
+      "distributionType": "stable",
+      "narrative": "保护措施让鸭嘴兽种群趋于稳定。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.55,
+      "distributionType": "contraction",
+      "narrative": "干旱和水坝建设持续威胁鸭嘴兽的栖息地。",
+      "evidenceType": "contemporary"
+    }
   ],
   "tasmanian_devil": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "袋獾在塔斯马尼亚的森林中是夜间的主宰者。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "袋獾在塔斯马尼亚广泛分布。" },
-    { "year": 1900, "populationScore": 0.5, "distributionType": "contraction", "narrative": "被视为害兽遭到猎杀，数量下降。" },
-    { "year": 1950, "populationScore": 0.6, "distributionType": "recovery", "narrative": "获得法律保护后数量有所恢复。" },
-    { "year": 2024, "populationScore": 0.35, "distributionType": "contraction", "narrative": "面部肿瘤疾病让袋獾数量减少了80%以上。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "袋獾在塔斯马尼亚的森林中是夜间的主宰者。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "袋獾在塔斯马尼亚广泛分布。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.5,
+      "distributionType": "contraction",
+      "narrative": "被视为害兽遭到猎杀，数量下降。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.6,
+      "distributionType": "recovery",
+      "narrative": "获得法律保护后数量有所恢复。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.35,
+      "distributionType": "contraction",
+      "narrative": "面部肿瘤疾病让袋獾数量减少了80%以上。",
+      "evidenceType": "contemporary"
+    }
   ],
   "bilby": [
-    { "year": 1770, "populationScore": 0.85, "distributionType": "stable", "narrative": "兔袋狸在澳大利亚70%的干旱和半干旱地区都有分布。" },
-    { "year": 1788, "populationScore": 0.8, "distributionType": "stable", "narrative": "兔袋狸是内陆生态系统的重要成员。" },
-    { "year": 1900, "populationScore": 0.4, "distributionType": "contraction", "narrative": "狐狸、猫和兔子的竞争让兔袋狸栖息地大幅缩小。" },
-    { "year": 1950, "populationScore": 0.25, "distributionType": "contraction", "narrative": "分布范围已缩小到原来的20%。" },
-    { "year": 2024, "populationScore": 0.15, "distributionType": "contraction", "narrative": "保护项目正在努力，但兔袋狸仍然脆弱。" }
+    {
+      "year": 1770,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "兔袋狸在澳大利亚70%的干旱和半干旱地区都有分布。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "兔袋狸是内陆生态系统的重要成员。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.4,
+      "distributionType": "contraction",
+      "narrative": "狐狸、猫和兔子的竞争让兔袋狸栖息地大幅缩小。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.25,
+      "distributionType": "contraction",
+      "narrative": "分布范围已缩小到原来的20%。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.15,
+      "distributionType": "contraction",
+      "narrative": "保护项目正在努力，但兔袋狸仍然脆弱。",
+      "evidenceType": "contemporary"
+    }
   ],
   "red_kangaroo": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "红袋鼠在广袤的内陆草原上成群奔跑。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "红袋鼠是澳大利亚内陆最常见的大型动物。" },
-    { "year": 1900, "populationScore": 0.7, "distributionType": "stable", "narrative": "牧场扩张改变了部分栖息地，但红袋鼠适应力强。" },
-    { "year": 1950, "populationScore": 0.8, "distributionType": "stable", "narrative": "水源点的增加反而帮助了红袋鼠种群扩大。" },
-    { "year": 2024, "populationScore": 0.85, "distributionType": "stable", "narrative": "红袋鼠数量约5000万只，是澳大利亚最成功的大型哺乳动物。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "红袋鼠在广袤的内陆草原上成群奔跑。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "红袋鼠是澳大利亚内陆最常见的大型动物。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "牧场扩张改变了部分栖息地，但红袋鼠适应力强。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "水源点的增加反而帮助了红袋鼠种群扩大。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "红袋鼠数量约5000万只，是澳大利亚最成功的大型哺乳动物。",
+      "evidenceType": "contemporary"
+    }
   ],
   "emu": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "鸸鹋在澳大利亚大陆各处漫步。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "鸸鹋广泛分布于大陆各地。" },
-    { "year": 1900, "populationScore": 0.7, "distributionType": "contraction", "narrative": "农业扩张减少了部分栖息地。" },
-    { "year": 1950, "populationScore": 0.75, "distributionType": "stable", "narrative": "鸸鹋种群保持稳定。" },
-    { "year": 2024, "populationScore": 0.7, "distributionType": "stable", "narrative": "鸸鹋数量约63万至72万只，状态良好。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "鸸鹋在澳大利亚大陆各处漫步。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "鸸鹋广泛分布于大陆各地。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.7,
+      "distributionType": "contraction",
+      "narrative": "农业扩张减少了部分栖息地。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.75,
+      "distributionType": "stable",
+      "narrative": "鸸鹋种群保持稳定。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "鸸鹋数量约63万至72万只，状态良好。",
+      "evidenceType": "contemporary"
+    }
   ],
   "echidna": [
-    { "year": 1770, "populationScore": 0.95, "distributionType": "stable", "narrative": "针鼹分布在澳大利亚的每一个角落。" },
-    { "year": 1788, "populationScore": 0.9, "distributionType": "stable", "narrative": "针鼹是澳大利亚分布最广的本土哺乳动物之一。" },
-    { "year": 1900, "populationScore": 0.8, "distributionType": "stable", "narrative": "针鼹的适应力让它在变化中保持稳定。" },
-    { "year": 1950, "populationScore": 0.8, "distributionType": "stable", "narrative": "针鼹继续在各种环境中生存。" },
-    { "year": 2024, "populationScore": 0.75, "distributionType": "stable", "narrative": "针鼹仍然广泛分布，但城市扩张带来了新的威胁。" }
+    {
+      "year": 1770,
+      "populationScore": 0.95,
+      "distributionType": "stable",
+      "narrative": "针鼹分布在澳大利亚的每一个角落。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "针鼹是澳大利亚分布最广的本土哺乳动物之一。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "针鼹的适应力让它在变化中保持稳定。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "针鼹继续在各种环境中生存。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.75,
+      "distributionType": "stable",
+      "narrative": "针鼹仍然广泛分布，但城市扩张带来了新的威胁。",
+      "evidenceType": "contemporary"
+    }
   ],
   "kookaburra": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "笑翠鸟的笑声回荡在东部的森林中。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "笑翠鸟在东部和南部广泛分布。" },
-    { "year": 1900, "populationScore": 0.8, "distributionType": "stable", "narrative": "笑翠鸟适应了人类环境的变化。" },
-    { "year": 1950, "populationScore": 0.8, "distributionType": "stable", "narrative": "笑翠鸟被引入西澳和塔斯马尼亚。" },
-    { "year": 2024, "populationScore": 0.75, "distributionType": "stable", "narrative": "笑翠鸟仍然是澳大利亚最受欢迎的鸟类之一。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "笑翠鸟的笑声回荡在东部的森林中。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "笑翠鸟在东部和南部广泛分布。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "笑翠鸟适应了人类环境的变化。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "笑翠鸟被引入西澳和塔斯马尼亚。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.75,
+      "distributionType": "stable",
+      "narrative": "笑翠鸟仍然是澳大利亚最受欢迎的鸟类之一。",
+      "evidenceType": "contemporary"
+    }
   ],
   "frilled_lizard": [
-    { "year": 1770, "populationScore": 0.85, "distributionType": "stable", "narrative": "伞蜥在北部的热带稀树草原上展示它的褶皱。" },
-    { "year": 1788, "populationScore": 0.8, "distributionType": "stable", "narrative": "伞蜥在北部地区广泛分布。" },
-    { "year": 1900, "populationScore": 0.75, "distributionType": "stable", "narrative": "伞蜥的栖息地相对未受影响。" },
-    { "year": 1950, "populationScore": 0.7, "distributionType": "stable", "narrative": "伞蜥种群保持稳定。" },
-    { "year": 2024, "populationScore": 0.7, "distributionType": "stable", "narrative": "伞蜥在北部地区仍然常见。" }
+    {
+      "year": 1770,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "伞蜥在北部的热带稀树草原上展示它的褶皱。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "伞蜥在北部地区广泛分布。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.75,
+      "distributionType": "stable",
+      "narrative": "伞蜥的栖息地相对未受影响。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "伞蜥种群保持稳定。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "伞蜥在北部地区仍然常见。",
+      "evidenceType": "contemporary"
+    }
   ],
   "cane_toad": [
-    { "year": 1770, "populationScore": 0, "distributionType": "stable", "narrative": "甘蔗蟾蜍尚未到达澳大利亚。" },
-    { "year": 1788, "populationScore": 0, "distributionType": "stable", "narrative": "甘蔗蟾蜍仍在中南美洲。" },
-    { "year": 1900, "populationScore": 0, "distributionType": "stable", "narrative": "甘蔗蟾蜍尚未被引入。" },
-    { "year": 1935, "populationScore": 0.1, "distributionType": "expansion", "narrative": "102只甘蔗蟾蜍从夏威夷被引入昆士兰北部。" },
-    { "year": 1950, "populationScore": 0.3, "distributionType": "expansion", "narrative": "甘蔗蟾蜍开始向周围地区扩散。" },
-    { "year": 2024, "populationScore": 0.95, "distributionType": "expansion", "narrative": "甘蔗蟾蜍已扩散到昆士兰、北领地、新南威尔士和西澳，数量超过20亿。" }
+    {
+      "year": 1770,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "甘蔗蟾蜍尚未到达澳大利亚。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "甘蔗蟾蜍仍在中南美洲。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "甘蔗蟾蜍尚未被引入。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1935,
+      "populationScore": 0.1,
+      "distributionType": "expansion",
+      "narrative": "102只甘蔗蟾蜍从夏威夷被引入昆士兰北部。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.3,
+      "distributionType": "expansion",
+      "narrative": "甘蔗蟾蜍开始向周围地区扩散。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.95,
+      "distributionType": "expansion",
+      "narrative": "甘蔗蟾蜍已扩散到昆士兰、北领地、新南威尔士和西澳，数量超过20亿。",
+      "evidenceType": "contemporary"
+    }
   ],
   "european_rabbit": [
-    { "year": 1770, "populationScore": 0, "distributionType": "stable", "narrative": "欧洲野兔尚未到达澳大利亚。" },
-    { "year": 1788, "populationScore": 0, "distributionType": "stable", "narrative": "第一批兔子随第一舰队到达，但未大规模扩散。" },
-    { "year": 1900, "populationScore": 0.8, "distributionType": "expansion", "narrative": "兔子已遍布大陆大部分地区，造成严重生态破坏。" },
-    { "year": 1950, "populationScore": 0.9, "distributionType": "expansion", "narrative": "粘液瘤病毒被引入控制兔子数量，初期效果显著。" },
-    { "year": 2024, "populationScore": 0.6, "distributionType": "stable", "narrative": "兔子数量约2亿只，仍是主要入侵物种。" }
+    {
+      "year": 1770,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "欧洲野兔尚未到达澳大利亚。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "第一批兔子随第一舰队到达，但未大规模扩散。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.8,
+      "distributionType": "expansion",
+      "narrative": "兔子已遍布大陆大部分地区，造成严重生态破坏。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.9,
+      "distributionType": "expansion",
+      "narrative": "粘液瘤病毒被引入控制兔子数量，初期效果显著。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.6,
+      "distributionType": "stable",
+      "narrative": "兔子数量约2亿只，仍是主要入侵物种。",
+      "evidenceType": "contemporary"
+    }
   ],
   "dingo": [
-    { "year": 1770, "populationScore": 0.85, "distributionType": "stable", "narrative": "野犬在澳大利亚大陆上已生活了数千年。" },
-    { "year": 1788, "populationScore": 0.8, "distributionType": "stable", "narrative": "野犬是大陆上最大的陆地掠食者。" },
-    { "year": 1900, "populationScore": 0.6, "distributionType": "contraction", "narrative": "牧民大量猎杀野犬以保护牲畜。" },
-    { "year": 1950, "populationScore": 0.5, "distributionType": "contraction", "narrative": "世界最长的围栏——野犬围栏建成，将野犬限制在围栏以北。" },
-    { "year": 2024, "populationScore": 0.45, "distributionType": "contraction", "narrative": "纯种野犬因与家犬杂交而面临基因稀释的威胁。" }
+    {
+      "year": 1770,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "野犬在澳大利亚大陆上已生活了数千年。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "野犬是大陆上最大的陆地掠食者。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.6,
+      "distributionType": "contraction",
+      "narrative": "牧民大量猎杀野犬以保护牲畜。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.5,
+      "distributionType": "contraction",
+      "narrative": "世界最长的围栏——野犬围栏建成，将野犬限制在围栏以北。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.45,
+      "distributionType": "contraction",
+      "narrative": "纯种野犬因与家犬杂交而面临基因稀释的威胁。",
+      "evidenceType": "contemporary"
+    }
   ],
   "red_fox": [
-    { "year": 1770, "populationScore": 0, "distributionType": "stable", "narrative": "赤狐尚未到达澳大利亚。" },
-    { "year": 1788, "populationScore": 0, "distributionType": "stable", "narrative": "赤狐仍在欧洲。" },
-    { "year": 1900, "populationScore": 0.6, "distributionType": "expansion", "narrative": "1855年引入后，赤狐迅速扩散到大陆大部分地区。" },
-    { "year": 1950, "populationScore": 0.8, "distributionType": "expansion", "narrative": "赤狐已成为澳大利亚分布最广的入侵掠食者。" },
-    { "year": 2024, "populationScore": 0.75, "distributionType": "stable", "narrative": "赤狐数量约700万只，是本土小型动物的主要威胁。" }
+    {
+      "year": 1770,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "赤狐尚未到达澳大利亚。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0,
+      "distributionType": "stable",
+      "narrative": "赤狐仍在欧洲。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.6,
+      "distributionType": "expansion",
+      "narrative": "1855年引入后，赤狐迅速扩散到大陆大部分地区。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.8,
+      "distributionType": "expansion",
+      "narrative": "赤狐已成为澳大利亚分布最广的入侵掠食者。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.75,
+      "distributionType": "stable",
+      "narrative": "赤狐数量约700万只，是本土小型动物的主要威胁。",
+      "evidenceType": "contemporary"
+    }
   ],
   "southern_right_whale": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "南露脊鲸在南部海域自由游弋。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "捕鲸业即将改变它们的命运。" },
-    { "year": 1900, "populationScore": 0.1, "distributionType": "contraction", "narrative": "大规模捕鲸让南露脊鲸几乎灭绝。" },
-    { "year": 1950, "populationScore": 0.15, "distributionType": "recovery", "narrative": "国际捕鲸禁令开始生效，种群缓慢恢复。" },
-    { "year": 2024, "populationScore": 0.5, "distributionType": "recovery", "narrative": "澳大利亚水域的南露脊鲸数量已恢复到约5000头。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "南露脊鲸在南部海域自由游弋。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "捕鲸业即将改变它们的命运。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.1,
+      "distributionType": "contraction",
+      "narrative": "大规模捕鲸让南露脊鲸几乎灭绝。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.15,
+      "distributionType": "recovery",
+      "narrative": "国际捕鲸禁令开始生效，种群缓慢恢复。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.5,
+      "distributionType": "recovery",
+      "narrative": "澳大利亚水域的南露脊鲸数量已恢复到约5000头。",
+      "evidenceType": "contemporary"
+    }
   ],
   "great_white_shark": [
-    { "year": 1770, "populationScore": 0.85, "distributionType": "stable", "narrative": "大白鲨在澳大利亚海域巡游。" },
-    { "year": 1788, "populationScore": 0.8, "distributionType": "stable", "narrative": "大白鲨是海洋生态系统的顶级掠食者。" },
-    { "year": 1900, "populationScore": 0.7, "distributionType": "stable", "narrative": "大白鲨种群相对稳定。" },
-    { "year": 1950, "populationScore": 0.5, "distributionType": "contraction", "narrative": "商业捕鱼和鲨鱼网影响了大白鲨数量。" },
-    { "year": 2024, "populationScore": 0.45, "distributionType": "contraction", "narrative": "大白鲨已受到保护，但恢复缓慢。" }
+    {
+      "year": 1770,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "大白鲨在澳大利亚海域巡游。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.8,
+      "distributionType": "stable",
+      "narrative": "大白鲨是海洋生态系统的顶级掠食者。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.7,
+      "distributionType": "stable",
+      "narrative": "大白鲨种群相对稳定。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.5,
+      "distributionType": "contraction",
+      "narrative": "商业捕鱼和鲨鱼网影响了大白鲨数量。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.45,
+      "distributionType": "contraction",
+      "narrative": "大白鲨已受到保护，但恢复缓慢。",
+      "evidenceType": "contemporary"
+    }
   ],
   "green_sea_turtle": [
-    { "year": 1770, "populationScore": 0.9, "distributionType": "stable", "narrative": "绿海龟在大堡礁和北部海域繁衍生息。" },
-    { "year": 1788, "populationScore": 0.85, "distributionType": "stable", "narrative": "绿海龟在澳大利亚北部海域广泛分布。" },
-    { "year": 1900, "populationScore": 0.5, "distributionType": "contraction", "narrative": "龟壳贸易和蛋的采集让绿海龟数量下降。" },
-    { "year": 1950, "populationScore": 0.4, "distributionType": "contraction", "narrative": "绿海龟面临多重威胁。" },
-    { "year": 2024, "populationScore": 0.55, "distributionType": "recovery", "narrative": "保护措施让部分种群恢复，但气候变化仍是长期威胁。" }
+    {
+      "year": 1770,
+      "populationScore": 0.9,
+      "distributionType": "stable",
+      "narrative": "绿海龟在大堡礁和北部海域繁衍生息。",
+      "evidenceType": "inferred"
+    },
+    {
+      "year": 1788,
+      "populationScore": 0.85,
+      "distributionType": "stable",
+      "narrative": "绿海龟在澳大利亚北部海域广泛分布。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1900,
+      "populationScore": 0.5,
+      "distributionType": "contraction",
+      "narrative": "龟壳贸易和蛋的采集让绿海龟数量下降。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 1950,
+      "populationScore": 0.4,
+      "distributionType": "contraction",
+      "narrative": "绿海龟面临多重威胁。",
+      "evidenceType": "historical"
+    },
+    {
+      "year": 2024,
+      "populationScore": 0.55,
+      "distributionType": "recovery",
+      "narrative": "保护措施让部分种群恢复，但气候变化仍是长期威胁。",
+      "evidenceType": "contemporary"
+    }
   ]
 }

@@ -2,12 +2,19 @@
 
 import React from "react";
 import { createPortal } from "react-dom";
-import maplibregl, { GeoJSONSource, MapGeoJSONFeature } from "maplibre-gl";
+import maplibregl, { GeoJSONSource, MapGeoJSONFeature, StyleSpecification } from "maplibre-gl";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
 import { useAtlas } from "@/contexts/AtlasContext";
+import { useExtendedSpecies } from "@/contexts/ExtendedSpeciesContext";
 import { getAtlasMapConfig } from "@/lib/map-style";
 import { interpolateKeyframes, KeyframeData } from "@/lib/interpolate";
+import {
+  getSpeciesDistributionPointsForYear,
+  getSpeciesEffectiveIntroYear,
+} from "@/lib/species-ui";
+import { useAmbientAudio } from "@/hooks/useAmbientAudio";
+import CloudEffectLayer from "@/components/CloudEffectLayer";
 import speciesData from "@/data/species.json";
 import timelineData from "@/data/timeline.json";
 import regionsData from "@/data/regions.json";
@@ -69,8 +76,23 @@ type CameraPadding = {
 
 type CameraMode = "overview" | "region" | "species";
 
+type SelectedDisplayPoint = {
+  id: string;
+  coordinates: [number, number];
+  weight: number;
+};
+
+type CloudDistributionPoint = {
+  id: string;
+  lat: number;
+  lng: number;
+  weight: number;
+};
+
 const MAP_SOURCE_REGIONS = "atlas-regions";
 const MAP_SOURCE_SPECIES = "atlas-species";
+const MAP_SOURCE_COLONY = "atlas-colony";
+const MAP_SOURCE_EXT = "atlas-ext-bubbles";
 const MAP_LAYER_REGION_FILL = "atlas-region-fill";
 const MAP_LAYER_REGION_AURA = "atlas-region-aura";
 const MAP_LAYER_REGION_GLOW = "atlas-region-glow";
@@ -81,6 +103,11 @@ const MAP_LAYER_REGION_SELECTED_LINE = "atlas-region-selected-line";
 const MAP_LAYER_SPECIES_AURA = "atlas-species-aura";
 const MAP_LAYER_SPECIES_HIT = "atlas-species-hit";
 const MAP_LAYER_SPECIES_SYMBOL = "atlas-species-symbol";
+const MAP_LAYER_COLONY_AURA = "atlas-colony-aura";
+const MAP_LAYER_COLONY_SYMBOL = "atlas-colony-symbol";
+const MAP_LAYER_EXT_AURA = "atlas-ext-aura";
+const MAP_LAYER_EXT_SYMBOL = "atlas-ext-symbol";
+const MAP_LAYER_EXT_HIT = "atlas-ext-hit";
 
 const TIMELINE = timelineData as Record<string, KeyframeData[]>;
 
@@ -90,6 +117,14 @@ const GROUP_ICON_PATHS: Record<string, string> = {
   native: "M12,4 C8,4 5,7 5,11 C5,15 12,22 12,22 C12,22 19,15 19,11 C19,7 16,4 12,4Z",
   invasive: "M12,2 L15,8 L22,8 L16.5,12.5 L18.5,19 L12,15 L5.5,19 L7.5,12.5 L2,8 L9,8Z",
   marine: "M4,12 C4,12 8,6 12,6 C16,6 20,12 20,12 C20,12 16,18 12,18 C8,18 4,12 4,12Z",
+};
+
+const GROUP_BASE_RADIUS: Record<string, number> = {
+  extinct: 10,
+  endangered: 14,
+  native: 16,
+  invasive: 18,
+  marine: 15,
 };
 
 const REGION_NAME_TO_ID = Object.fromEntries(
@@ -159,6 +194,15 @@ function mergeBounds(items: BoundsLike[]): BoundsLike {
   );
 }
 
+function getSpeciesDistributionBounds(speciesStates: string[]): BoundsLike | null {
+  const stateBounds = speciesStates
+    .map((stateId) => REGION_BOUNDS_LOOKUP.get(stateId))
+    .filter((bounds): bounds is BoundsLike => bounds !== undefined);
+
+  if (stateBounds.length === 0) return null;
+  return mergeBounds(stateBounds);
+}
+
 const REGION_SOURCE_DATA = (() => {
   const features = (((statesRaw as unknown) as GeoFeatureCollection).features ?? [])
     .map((feature) => {
@@ -195,6 +239,68 @@ const REGION_BOUNDS_LOOKUP = new Map(
 );
 
 const AUSTRALIA_BOUNDS = mergeBounds(Array.from(REGION_BOUNDS_LOOKUP.values()));
+
+function buildRasterFallbackStyle(): StyleSpecification {
+  return {
+    version: 8,
+    projection: { type: "mercator" },
+    center: FALLBACK_CENTER,
+    zoom: FALLBACK_ZOOM,
+    sources: {
+      osm: {
+        type: "raster",
+        tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+        tileSize: 256,
+        attribution: "© OpenStreetMap contributors",
+      },
+    },
+    layers: [
+      {
+        id: "background",
+        type: "background",
+        paint: {
+          "background-color": "#dfe8f1",
+        },
+      },
+      {
+        id: "osm",
+        type: "raster",
+        source: "osm",
+      },
+    ],
+  };
+}
+
+async function resolveMapStyle(
+  style: StyleSpecification | string,
+  provider: "maptiler" | "openfreemap" | "fallback"
+): Promise<StyleSpecification | string> {
+  if (provider !== "openfreemap" || typeof style !== "string") {
+    return style;
+  }
+
+  try {
+    const response = await fetch(style);
+    if (!response.ok) {
+      throw new Error(`Failed to load style: ${response.status}`);
+    }
+
+    const remoteStyle = (await response.json()) as StyleSpecification & {
+      center?: [number, number];
+      zoom?: number;
+      projection?: StyleSpecification["projection"];
+    };
+
+    return {
+      ...remoteStyle,
+      projection: remoteStyle.projection ?? { type: "mercator" },
+      center: remoteStyle.center ?? FALLBACK_CENTER,
+      zoom: remoteStyle.zoom ?? FALLBACK_ZOOM,
+    };
+  } catch {
+    return buildRasterFallbackStyle();
+  }
+}
 
 function findRegionIdByLngLat(lng: number, lat: number) {
   const point = {
@@ -449,29 +555,286 @@ async function addSpeciesImages(map: maplibregl.Map) {
   );
 }
 
-function buildSpeciesSourceData(species: ProcessedSpecies[]) {
+function buildSpeciesSourceData(
+  species: ProcessedSpecies[],
+  focusRegionId: string | null,
+  selectedSpeciesId: string | null,
+  currentYear: number
+) {
+  if (selectedSpeciesId) {
+    return {
+      type: "FeatureCollection" as const,
+      features: [],
+    };
+  }
+
+  const maxPerSpecies = focusRegionId ? 10 : 5;
+
   return {
     type: "FeatureCollection",
     features: species
       .filter((entry) => entry.isVisibleOnMap && !entry.isSelected)
-      .map((entry) => ({
-        type: "Feature" as const,
-        id: entry.id,
-        geometry: {
-          type: "Point" as const,
-          coordinates: [entry.geoPoint.lng, entry.geoPoint.lat],
-        },
-        properties: {
-          id: entry.id,
-          nameZh: entry.nameZh,
-          color: entry.color,
-          iconId: entry.id,
-          iconOpacity: entry.iconOpacity,
-          iconScale: entry.iconScale,
-          auraOpacity: entry.auraOpacity,
-        },
-      })),
+      .flatMap((entry) => {
+        const points = getSpeciesDistributionPointsForYear(entry, currentYear)
+          .slice(0, maxPerSpecies);
+
+        const baseRadius = GROUP_BASE_RADIUS[entry.group] ?? 16;
+        const popFactor = 0.5 + entry.interpolated.populationScore * 0.8;
+
+        if (!points || points.length === 0) {
+          const radius = baseRadius * popFactor * 1.6;
+          const iconSize = (radius * 2) / 88;
+          const pointId = `geo-${entry.id}`;
+
+          return [
+            {
+              type: "Feature" as const,
+              geometry: {
+                type: "Point" as const,
+                coordinates: [entry.geoPoint.lng, entry.geoPoint.lat],
+              },
+              properties: {
+                id: entry.id,
+                pointId,
+                nameZh: entry.nameZh,
+                color: entry.color,
+                iconId: entry.id,
+                iconOpacity: entry.iconOpacity,
+                iconScale: iconSize * entry.iconScale,
+                auraOpacity: entry.auraOpacity,
+              },
+            },
+          ];
+        }
+
+        return points.map((pt, idx) => {
+          const isRep = idx === 0;
+          const radius = baseRadius * popFactor * (isRep ? 1.6 : 1);
+          const iconSize = (radius * 2) / 88;
+          const pointId = `dist-${entry.id}-${idx}`;
+
+          return {
+            type: "Feature" as const,
+            geometry: {
+              type: "Point" as const,
+              coordinates: [pt.lng, pt.lat],
+            },
+            properties: {
+              id: entry.id,
+              pointId,
+              nameZh: entry.nameZh,
+              color: entry.color,
+              iconId: entry.id,
+              iconOpacity: entry.iconOpacity * (isRep ? 1 : 0.65 + pt.weight * 0.25),
+              iconScale: iconSize * entry.iconScale,
+              auraOpacity: entry.auraOpacity * (isRep ? 1 : 0.5),
+            },
+          };
+        });
+      }),
   };
+}
+
+function buildSelectedDisplayPoints(
+  selectedSpecies: ProcessedSpecies | null,
+  currentYear: number
+): SelectedDisplayPoint[] {
+  if (!selectedSpecies || !selectedSpecies.isVisibleOnMap) {
+    return [];
+  }
+
+  const distPoints = getSpeciesDistributionPointsForYear(selectedSpecies, currentYear);
+
+  if (distPoints && distPoints.length > 0) {
+    return distPoints.map((point, index) => ({
+      id: `dist-${selectedSpecies.id}-${index}`,
+      coordinates: [point.lng, point.lat],
+      weight: point.weight,
+    }));
+  }
+
+  const statePoints = selectedSpecies.states
+    .map((stateId) => {
+      const bounds = REGION_BOUNDS_LOOKUP.get(stateId);
+      if (!bounds) return null;
+
+      return {
+        id: `state-${selectedSpecies.id}-${stateId}`,
+        coordinates: getBoundsCenter(bounds),
+        weight: 1,
+      } satisfies SelectedDisplayPoint;
+    })
+    .filter(Boolean) as SelectedDisplayPoint[];
+
+  if (statePoints.length > 0) {
+    return statePoints;
+  }
+
+  return [
+    {
+      id: `geo-${selectedSpecies.id}`,
+      coordinates: [selectedSpecies.geoPoint.lng, selectedSpecies.geoPoint.lat],
+      weight: 1,
+    },
+  ];
+}
+
+function resolvePrimarySelectedPoint(
+  points: SelectedDisplayPoint[],
+  clickLngLat: [number, number] | null,
+  preferredPointId: string | null
+): SelectedDisplayPoint | null {
+  if (points.length === 0) return null;
+  if (preferredPointId) {
+    const matchedPoint = points.find((point) => point.id === preferredPointId);
+    if (matchedPoint) return matchedPoint;
+  }
+  if (!clickLngLat) return points[0];
+
+  return points.reduce((closest, point) => {
+    const [pointLng, pointLat] = point.coordinates;
+    const lngDistance = pointLng - clickLngLat[0];
+    const latDistance = pointLat - clickLngLat[1];
+    const distance = lngDistance * lngDistance + latDistance * latDistance;
+
+    if (!closest) {
+      return { point, distance };
+    }
+
+    return distance < closest.distance ? { point, distance } : closest;
+  }, null as { point: SelectedDisplayPoint; distance: number } | null)?.point ?? points[0];
+}
+
+function orderCloudDistributionPoints(
+  points: CloudDistributionPoint[],
+  clickLngLat: [number, number] | null,
+  preferredPointId: string | null
+): Array<{ lat: number; lng: number; weight: number }> {
+  if (points.length === 0) return [];
+
+  const primaryPoint =
+    (preferredPointId
+      ? points.find((point) => point.id === preferredPointId)
+      : null) ??
+    (clickLngLat
+      ? points.reduce((closest, point) => {
+          const lngDistance = point.lng - clickLngLat[0];
+          const latDistance = point.lat - clickLngLat[1];
+          const distance = lngDistance * lngDistance + latDistance * latDistance;
+
+          if (!closest) {
+            return { point, distance };
+          }
+
+          return distance < closest.distance ? { point, distance } : closest;
+        }, null as { point: CloudDistributionPoint; distance: number } | null)?.point
+      : null) ??
+    points[0];
+
+  return [primaryPoint, ...points.filter((point) => point.id !== primaryPoint.id)].map(
+    ({ lat, lng, weight }) => ({ lat, lng, weight })
+  );
+}
+
+function buildColonySourceData(
+  selectedSpecies: ProcessedSpecies | null,
+  points: SelectedDisplayPoint[],
+  primaryPoint: SelectedDisplayPoint | null,
+  pulseScale: number
+): { type: "FeatureCollection"; features: GeoJSON.Feature[] } {
+  void selectedSpecies;
+  void points;
+  void primaryPoint;
+  void pulseScale;
+  return { type: "FeatureCollection", features: [] };
+}
+
+const EXT_TAXON_COLORS: Record<string, string> = {
+  bird: "#7da56c",
+  mammal: "#b8a88a",
+  reptile: "#e08a58",
+  amphibian: "#64ba9c",
+  marine: "#9ec3d8",
+};
+
+function getExtMarkerSvg(taxonomicClass: string) {
+  const color = EXT_TAXON_COLORS[taxonomicClass] || "#b8a88a";
+  const iconPath = GROUP_ICON_PATHS[taxonomicClass] ?? GROUP_ICON_PATHS.native;
+
+  return `
+    <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88">
+      <circle cx="44" cy="44" r="22" fill="${color}" opacity="0.1" />
+      <circle cx="44" cy="44" r="18" fill="rgba(255,250,243,0.82)" stroke="${color}" stroke-width="2" stroke-opacity="0.5" />
+      <g transform="translate(26 26) scale(1.5)">
+        <path d="${iconPath}" fill="${color}" opacity="0.65"/>
+      </g>
+    </svg>
+  `;
+}
+
+async function addExtSpeciesImages(map: maplibregl.Map) {
+  const classes = ["bird", "mammal", "reptile", "amphibian", "marine"];
+  await Promise.all(
+    classes.map(
+      (cls) =>
+        new Promise<void>((resolve) => {
+          const imgId = `ext-${cls}`;
+          if (map.hasImage(imgId)) { resolve(); return; }
+          const image = new Image(88, 88);
+          image.onload = () => {
+            if (!map.hasImage(imgId)) {
+              map.addImage(imgId, image, { pixelRatio: 2 });
+            }
+            resolve();
+          };
+          image.onerror = () => resolve();
+          image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(getExtMarkerSvg(cls))}`;
+        })
+    )
+  );
+}
+
+function buildExtSpeciesSourceData(
+  extSpecies: Array<{
+    id: string;
+    taxonomicClass: string;
+    distributionPoints?: Array<{ lat: number; lng: number; weight: number }>;
+    populationScore?: number;
+  }>,
+  focusRegionId: string | null,
+  selectedSpeciesId: string | null
+) {
+  if (selectedSpeciesId) {
+    return { type: "FeatureCollection" as const, features: [] };
+  }
+
+  const features: GeoJSON.Feature[] = [];
+  const maxPerSpecies = focusRegionId ? 5 : 2;
+
+  for (const sp of extSpecies) {
+    if (!sp.distributionPoints || sp.distributionPoints.length === 0) continue;
+    const isSelected = sp.id === selectedSpeciesId;
+    if (isSelected) continue;
+
+    const points = sp.distributionPoints.slice(0, maxPerSpecies);
+    points.forEach((pt, index) => {
+      features.push({
+        type: "Feature",
+        geometry: { type: "Point", coordinates: [pt.lng, pt.lat] },
+        properties: {
+          id: sp.id,
+          pointId: `ext-dist-${sp.id}-${index}`,
+          taxonomicClass: sp.taxonomicClass,
+          iconId: `ext-${sp.taxonomicClass}`,
+          weight: pt.weight,
+          iconOpacity: selectedSpeciesId ? 0 : 0.55,
+          iconScale: 0.28 + (sp.populationScore ?? 0.5) * 0.12,
+        },
+      });
+    });
+  }
+
+  return { type: "FeatureCollection" as const, features };
 }
 
 function SelectedSpeciesMarker({
@@ -493,6 +856,11 @@ function SelectedSpeciesMarker({
       className={`atlas-selected-marker ${species.isGhost ? "is-ghost" : ""} ${
         species.isExtinct ? "is-extinct" : ""
       }`}
+      style={
+        {
+          "--selected-marker-color": species.color,
+        } as React.CSSProperties
+      }
       aria-label={`${species.nameZh}${species.isVisibleOnMap ? "，已聚焦" : "，当前时间地图上不可见"}`}
     >
       <span className="atlas-selected-marker__glyph" aria-hidden>
@@ -513,11 +881,16 @@ export default function AustraliaMap() {
     currentYear,
     focusRegionId,
     selectedSpeciesId,
+    selectedSpeciesClickLngLat,
     searchKeyword,
     setFocusRegion,
     setSelectedSpecies,
+    setMapReady,
     openSpecies,
+    ambientAudioEnabled,
   } = useAtlas();
+  const { loadedSpecies: extLoadedSpecies } = useExtendedSpecies();
+  const ambientAudio = useAmbientAudio(ambientAudioEnabled);
   const shouldReduceMotion = useReducedMotion();
 
   const frameRef = React.useRef<HTMLDivElement>(null);
@@ -533,19 +906,31 @@ export default function AustraliaMap() {
   } | null>(null);
   const latestFocusRegionIdRef = React.useRef<string | null>(focusRegionId);
   const latestSelectedSpeciesIdRef = React.useRef<string | null>(selectedSpeciesId);
+  const setMapReadyRef = React.useRef(setMapReady);
+  const cameraPositionedForSpeciesRef = React.useRef<string | null>(null);
+  const selectedPrimaryPointIdRef = React.useRef<string | null>(null);
+  const speciesClickOriginRef = React.useRef<[number, number] | null>(null);
+  const speciesFitBoundsTimerRef = React.useRef<number | null>(null);
+  const latestProcessedSpeciesRef = React.useRef<ProcessedSpecies[]>([]);
+  const colonyPulseRafRef = React.useRef<number | null>(null);
   const latestSpeciesSourceDataRef = React.useRef<ReturnType<typeof buildSpeciesSourceData>>(
-    buildSpeciesSourceData([])
+    buildSpeciesSourceData([], null, null, 1770)
   );
   const actionRefs = React.useRef({
     openSpecies,
     setFocusRegion,
     setSelectedSpecies,
+    triggerAmbient: ambientAudio.triggerForCoordinate,
   });
   const previousFocusRegionIdRef = React.useRef<string | null>(focusRegionId);
   const [hoveredRegionId, setHoveredRegionId] = React.useState<string | null>(null);
   const [selectedMarkerHost, setSelectedMarkerHost] = React.useState<HTMLDivElement | null>(null);
   const [mapBooted, setMapBooted] = React.useState(false);
   const [regionTransitionLabel, setRegionTransitionLabel] = React.useState<string | null>(null);
+  const [mapErrorMessage, setMapErrorMessage] = React.useState<string | null>(null);
+  const [webGLUnsupported, setWebGLUnsupported] = React.useState(false);
+  const [mapLoadTimeout, setMapLoadTimeout] = React.useState(false);
+  const [colonyPulseScale, setColonyPulseScale] = React.useState(1);
 
   const mapConfig = React.useMemo(() => getAtlasMapConfig(), []);
 
@@ -558,12 +943,17 @@ export default function AustraliaMap() {
   }, [selectedSpeciesId]);
 
   React.useEffect(() => {
+    setMapReadyRef.current = setMapReady;
+  }, [setMapReady]);
+
+  React.useEffect(() => {
     actionRefs.current = {
       openSpecies,
       setFocusRegion,
       setSelectedSpecies,
+      triggerAmbient: ambientAudio.triggerForCoordinate,
     };
-  }, [openSpecies, setFocusRegion, setSelectedSpecies]);
+  }, [openSpecies, setFocusRegion, setSelectedSpecies, ambientAudio.triggerForCoordinate]);
 
   React.useEffect(() => {
     if (!mapBooted) {
@@ -595,7 +985,7 @@ export default function AustraliaMap() {
 
     return (speciesData as SpeciesRecord[]).map((species) => {
       const interpolated = interpolateKeyframes(TIMELINE[species.id] || [], currentYear);
-      const introYear = typeof species.introYear === "number" ? species.introYear : null;
+      const introYear = getSpeciesEffectiveIntroYear(species.id);
       const extinctYear = typeof species.extinctYear === "number" ? species.extinctYear : null;
       const isPreArrival = introYear !== null && currentYear < introYear;
       const isExtinct =
@@ -614,8 +1004,8 @@ export default function AustraliaMap() {
           : 0.18
         : 0.08;
 
-      const iconOpacity = isSelected ? 0 : selectedSpeciesId ? baseOpacity * 0.42 : baseOpacity;
-      const auraOpacity = Math.min(iconOpacity * 0.48, 0.28);
+      const iconOpacity = isSelected ? 0 : selectedSpeciesId ? 0 : baseOpacity;
+      const auraOpacity = selectedSpeciesId && !isSelected ? 0 : Math.min(iconOpacity * 0.48, 0.28);
       const iconScale = focusRegionId
         ? matchesSearch && inFocusRegion
           ? 0.98
@@ -645,14 +1035,105 @@ export default function AustraliaMap() {
     [processedSpecies, selectedSpeciesId]
   );
 
+  React.useEffect(() => {
+    latestProcessedSpeciesRef.current = processedSpecies;
+  }, [processedSpecies]);
+
   const speciesSourceData = React.useMemo(
-    () => buildSpeciesSourceData(processedSpecies),
-    [processedSpecies]
+    () => buildSpeciesSourceData(processedSpecies, focusRegionId, selectedSpeciesId, currentYear),
+    [currentYear, processedSpecies, focusRegionId, selectedSpeciesId]
+  );
+
+  const selectedDisplayPoints = React.useMemo(
+    () => buildSelectedDisplayPoints(selectedSpecies, currentYear),
+    [currentYear, selectedSpecies]
+  );
+
+  const primarySelectedPoint = React.useMemo(
+    () =>
+      resolvePrimarySelectedPoint(
+        selectedDisplayPoints,
+        selectedSpeciesClickLngLat,
+        selectedPrimaryPointIdRef.current
+      ),
+    [selectedDisplayPoints, selectedSpeciesClickLngLat]
+  );
+
+  const colonySourceData = React.useMemo(
+    () => buildColonySourceData(selectedSpecies, selectedDisplayPoints, primarySelectedPoint, colonyPulseScale),
+    [selectedSpecies, selectedDisplayPoints, primarySelectedPoint, colonyPulseScale]
   );
 
   React.useEffect(() => {
     latestSpeciesSourceDataRef.current = speciesSourceData;
   }, [speciesSourceData]);
+
+  const extSourceData = React.useMemo(
+    () => buildExtSpeciesSourceData(extLoadedSpecies, focusRegionId, selectedSpeciesId),
+    [extLoadedSpecies, focusRegionId, selectedSpeciesId]
+  );
+
+  const selectedExtSpecies = React.useMemo(() => {
+    if (!selectedSpeciesId?.startsWith("ext_")) return null;
+    return extLoadedSpecies.find((s) => s.id === selectedSpeciesId) ?? null;
+  }, [selectedSpeciesId, extLoadedSpecies]);
+
+  const selectedDistributionColor = React.useMemo(
+    () =>
+      selectedSpecies?.color ||
+      EXT_TAXON_COLORS[selectedExtSpecies?.taxonomicClass || "mammal"] ||
+      "#b8a88a",
+    [selectedExtSpecies?.taxonomicClass, selectedSpecies?.color]
+  );
+
+  const cloudDistributionPoints = React.useMemo(() => {
+    if (selectedSpecies) {
+      if (!selectedSpecies.isVisibleOnMap) {
+        return [];
+      }
+
+      const orderedDisplayPoints = selectedDisplayPoints.map((point) => ({
+        id: point.id,
+        lat: point.coordinates[1],
+        lng: point.coordinates[0],
+        weight: point.weight,
+      }));
+
+      if (orderedDisplayPoints.length > 0) {
+        if (!primarySelectedPoint) {
+          return orderedDisplayPoints.map(({ lat, lng, weight }) => ({ lat, lng, weight }));
+        }
+
+        const primaryPoint = orderedDisplayPoints.find((point) => point.id === primarySelectedPoint.id) ?? null;
+        const secondaryPoints = orderedDisplayPoints.filter((point) => point.id !== primarySelectedPoint.id);
+
+        return (primaryPoint ? [primaryPoint, ...secondaryPoints] : orderedDisplayPoints)
+          .map(({ lat, lng, weight }) => ({ lat, lng, weight }));
+      }
+
+      if (primarySelectedPoint) {
+        return [{
+          lat: primarySelectedPoint.coordinates[1],
+          lng: primarySelectedPoint.coordinates[0],
+          weight: 1,
+        }];
+      }
+      return [{ lat: selectedSpecies.geoPoint.lat, lng: selectedSpecies.geoPoint.lng, weight: 1 }];
+    }
+    if (selectedExtSpecies?.distributionPoints) {
+      return orderCloudDistributionPoints(
+        selectedExtSpecies.distributionPoints.map((point, index) => ({
+          id: `ext-dist-${selectedExtSpecies.id}-${index}`,
+          lat: point.lat,
+          lng: point.lng,
+          weight: point.weight,
+        })),
+        selectedSpeciesClickLngLat,
+        selectedPrimaryPointIdRef.current
+      );
+    }
+    return [];
+  }, [primarySelectedPoint, selectedDisplayPoints, selectedSpecies, selectedExtSpecies, selectedSpeciesClickLngLat]);
 
   const syncRegionFeatureStates = React.useCallback(() => {
     const map = mapRef.current;
@@ -692,12 +1173,30 @@ export default function AustraliaMap() {
     }
   }, [speciesSourceData]);
 
+  const syncColonySource = React.useCallback(() => {
+    const map = mapRef.current;
+    if (!map || !isMapReadyRef.current) return;
+
+    const source = map.getSource(MAP_SOURCE_COLONY) as GeoJSONSource | undefined;
+    if (source) {
+      source.setData(colonySourceData as GeoJSON.FeatureCollection);
+    }
+  }, [colonySourceData]);
+
   const syncCamera = React.useCallback(() => {
     const map = mapRef.current;
     const frame = frameRef.current;
     if (!map || !frame || !isMapReadyRef.current) return;
+    if (speciesFitBoundsTimerRef.current !== null) {
+      window.clearTimeout(speciesFitBoundsTimerRef.current);
+      speciesFitBoundsTimerRef.current = null;
+    }
 
-    const cameraMode: CameraMode = selectedSpecies?.isVisibleOnMap
+    const currentSelectedSpeciesId = latestSelectedSpeciesIdRef.current;
+    const currentSelectedSpecies =
+      latestProcessedSpeciesRef.current.find((entry) => entry.id === currentSelectedSpeciesId) ?? null;
+    const hasSpeciesFocus = currentSelectedSpecies?.isVisibleOnMap || selectedExtSpecies;
+    const cameraMode: CameraMode = hasSpeciesFocus
       ? "species"
       : focusRegionId
       ? "region"
@@ -705,7 +1204,7 @@ export default function AustraliaMap() {
     const padding = getCameraPadding(frame.clientWidth, cameraMode);
     const duration = shouldReduceMotion
       ? 0
-      : selectedSpecies?.isVisibleOnMap
+      : hasSpeciesFocus
       ? 760
       : focusRegionId
       ? 620
@@ -713,9 +1212,77 @@ export default function AustraliaMap() {
 
     map.stop();
 
-    if (selectedSpecies?.isVisibleOnMap) {
+    if (currentSelectedSpecies?.isVisibleOnMap) {
+      const clickOrigin = speciesClickOriginRef.current;
+
+      if (
+        cameraPositionedForSpeciesRef.current === currentSelectedSpecies.id &&
+        !clickOrigin
+      ) {
+        return;
+      }
+
+      const distributionBounds = getSpeciesDistributionBounds(currentSelectedSpecies.states);
+
+      if (distributionBounds) {
+        const paddedBounds = extendBounds(distributionBounds, 1.2);
+
+        if (clickOrigin) {
+          speciesClickOriginRef.current = null;
+
+          map.flyTo({
+            center: clickOrigin,
+            zoom: Math.min(map.getZoom() + 0.5, 5.5),
+            duration: shouldReduceMotion ? 0 : 300,
+            essential: true,
+          });
+
+          speciesFitBoundsTimerRef.current = window.setTimeout(() => {
+            const currentMap = mapRef.current;
+            const currentFrame = frameRef.current;
+            if (!currentMap || !currentFrame || !isMapReadyRef.current) {
+              speciesFitBoundsTimerRef.current = null;
+              return;
+            }
+
+            currentMap.fitBounds(paddedBounds, {
+              padding: getCameraPadding(currentFrame.clientWidth, "species"),
+              duration: shouldReduceMotion ? 0 : 680,
+              essential: true,
+              maxZoom: 6.5,
+            });
+            speciesFitBoundsTimerRef.current = null;
+          }, shouldReduceMotion ? 0 : 320);
+        } else {
+          map.fitBounds(paddedBounds, {
+            padding,
+            duration: shouldReduceMotion ? 0 : 780,
+            essential: true,
+            maxZoom: 6.5,
+          });
+        }
+
+        cameraPositionedForSpeciesRef.current = currentSelectedSpecies.id;
+        return;
+      }
+
+      speciesClickOriginRef.current = null;
       map.flyTo({
-        center: [selectedSpecies.geoPoint.lng, selectedSpecies.geoPoint.lat],
+        center: [currentSelectedSpecies.geoPoint.lng, currentSelectedSpecies.geoPoint.lat],
+        zoom: Math.max(map.getZoom(), getFocusZoom(focusRegionId)),
+        padding,
+        duration,
+        essential: true,
+      });
+      cameraPositionedForSpeciesRef.current = currentSelectedSpecies.id;
+      return;
+    }
+
+    if (selectedExtSpecies && selectedSpeciesClickLngLat) {
+      speciesClickOriginRef.current = null;
+      cameraPositionedForSpeciesRef.current = currentSelectedSpeciesId;
+      map.flyTo({
+        center: selectedSpeciesClickLngLat,
         zoom: Math.max(map.getZoom(), getFocusZoom(focusRegionId)),
         padding,
         duration,
@@ -723,6 +1290,8 @@ export default function AustraliaMap() {
       });
       return;
     }
+
+    cameraPositionedForSpeciesRef.current = null;
 
     if (focusRegionId) {
       const regionBounds = REGION_BOUNDS_LOOKUP.get(focusRegionId);
@@ -756,57 +1325,92 @@ export default function AustraliaMap() {
       essential: true,
       maxZoom: 4.15,
     });
-  }, [focusRegionId, selectedSpecies, shouldReduceMotion]);
+  }, [focusRegionId, selectedExtSpecies, selectedSpeciesClickLngLat, shouldReduceMotion]);
 
   React.useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
+    let isDisposed = false;
+    let map: maplibregl.Map | null = null;
+    let timeoutId: number | null = null;
 
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      style: mapConfig.style,
-      center: FALLBACK_CENTER,
-      zoom: FALLBACK_ZOOM,
-      fadeDuration: 0,
-      minZoom: 2.6,
-      maxZoom: 9.8,
-      dragRotate: false,
-      pitchWithRotate: false,
-      touchZoomRotate: true,
-      attributionControl: false,
-      renderWorldCopies: false,
-    });
+    // WebGL support check (PRD §8.1)
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (!gl) {
+      setWebGLUnsupported(true);
+      return;
+    }
 
-    mapRef.current = map;
+    setMapBooted(false);
+    setMapLoadTimeout(false);
+    setMapErrorMessage(null);
+    setMapReadyRef.current(false);
 
-    map.addControl(
-      new maplibregl.AttributionControl({
-        compact: true,
-      }),
-      "bottom-right"
-    );
-
-    map.touchZoomRotate.disableRotation();
-    map.setMaxBounds(extendBounds(AUSTRALIA_BOUNDS, MAP_MAX_BOUNDS_PADDING));
-
-    resizeObserverRef.current = new ResizeObserver(() => {
-      if (resizeRafRef.current !== null) {
+    const initializeMap = async () => {
+      const resolvedStyle = await resolveMapStyle(mapConfig.style, mapConfig.provider);
+      if (isDisposed || !containerRef.current || mapRef.current) {
         return;
       }
 
-      resizeRafRef.current = window.requestAnimationFrame(() => {
-        resizeRafRef.current = null;
-        map.resize();
+      map = new maplibregl.Map({
+        container: containerRef.current,
+        style: resolvedStyle,
+        center: FALLBACK_CENTER,
+        zoom: FALLBACK_ZOOM,
+        fadeDuration: 0,
+        minZoom: 2.6,
+        maxZoom: 9.8,
+        dragRotate: false,
+        pitchWithRotate: false,
+        touchZoomRotate: true,
+        attributionControl: false,
+        renderWorldCopies: false,
       });
-    });
-    resizeObserverRef.current.observe(frameRef.current ?? containerRef.current);
 
-    const handleLoad = async () => {
-      await addSpeciesImages(map);
+      mapRef.current = map;
 
-      map.addSource(MAP_SOURCE_REGIONS, {
-        type: "geojson",
-        data: REGION_SOURCE_DATA as GeoJSON.FeatureCollection,
+      window.requestAnimationFrame(() => {
+        map?.resize();
       });
+
+      map.addControl(
+        new maplibregl.AttributionControl({
+          compact: true,
+        }),
+        "bottom-right"
+      );
+
+      map.touchZoomRotate.disableRotation();
+      map.setMaxBounds(extendBounds(AUSTRALIA_BOUNDS, MAP_MAX_BOUNDS_PADDING));
+
+      map.on("error", (event) => {
+        const message = event.error?.message || "地图资源暂时不可用";
+        if (message.toLowerCase().includes("abort")) {
+          return;
+        }
+        setMapErrorMessage(message);
+      });
+
+      resizeObserverRef.current = new ResizeObserver(() => {
+        if (resizeRafRef.current !== null) {
+          return;
+        }
+
+        resizeRafRef.current = window.requestAnimationFrame(() => {
+          resizeRafRef.current = null;
+          map?.resize();
+        });
+      });
+      resizeObserverRef.current.observe(frameRef.current ?? containerRef.current);
+
+      const handleLoad = async () => {
+        if (!map) return;
+        await addSpeciesImages(map);
+
+        map.addSource(MAP_SOURCE_REGIONS, {
+          type: "geojson",
+          data: REGION_SOURCE_DATA as GeoJSON.FeatureCollection,
+        });
 
       map.addLayer({
         id: MAP_LAYER_REGION_FILL,
@@ -1016,39 +1620,200 @@ export default function AustraliaMap() {
         },
       });
 
+      map.addSource(MAP_SOURCE_COLONY, {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+
+      map.addLayer({
+        id: MAP_LAYER_COLONY_AURA,
+        type: "circle",
+        source: MAP_SOURCE_COLONY,
+        paint: {
+          "circle-color": ["coalesce", ["get", "color"], "#7da56c"],
+          "circle-radius": [
+            "interpolate", ["linear"], ["zoom"],
+            3, ["*", ["coalesce", ["get", "radius"], 12], 0.5],
+            5, ["coalesce", ["get", "radius"], 12],
+            7, ["*", ["coalesce", ["get", "radius"], 12], 1.8],
+          ],
+          "circle-opacity": ["coalesce", ["get", "auraOpacity"], 0.15],
+          "circle-blur": 0.75,
+          "circle-translate-transition": { duration: 400, delay: 0 },
+          "circle-opacity-transition": { duration: 400, delay: 0 },
+          "circle-radius-transition": { duration: 600, delay: 0 },
+        },
+      });
+
+      map.addLayer({
+        id: MAP_LAYER_COLONY_SYMBOL,
+        type: "symbol",
+        source: MAP_SOURCE_COLONY,
+        layout: {
+          "icon-image": ["get", "iconId"],
+          "icon-size": ["coalesce", ["get", "scale"], 0.8],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+        },
+        paint: {
+          "icon-opacity": ["coalesce", ["get", "opacity"], 0.7],
+          "icon-opacity-transition": { duration: 600, delay: 0 },
+        },
+      });
+
+      await addExtSpeciesImages(map);
+
+      map.addSource(MAP_SOURCE_EXT, {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+
+      map.addLayer(
+        {
+          id: MAP_LAYER_EXT_AURA,
+          type: "circle",
+          source: MAP_SOURCE_EXT,
+          paint: {
+            "circle-color": "#b8a88a",
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 6, 6, 10, 8.5, 14],
+            "circle-opacity": 0.1,
+            "circle-blur": 0.9,
+          },
+        },
+        MAP_LAYER_SPECIES_AURA
+      );
+
+      map.addLayer(
+        {
+          id: MAP_LAYER_EXT_HIT,
+          type: "circle",
+          source: MAP_SOURCE_EXT,
+          paint: {
+            "circle-radius": 16,
+            "circle-opacity": 0.01,
+          },
+        },
+        MAP_LAYER_SPECIES_AURA
+      );
+
+      map.addLayer(
+        {
+          id: MAP_LAYER_EXT_SYMBOL,
+          type: "symbol",
+          source: MAP_SOURCE_EXT,
+          layout: {
+            "icon-image": ["get", "iconId"],
+            "icon-size": ["coalesce", ["get", "iconScale"], 0.28],
+            "icon-allow-overlap": true,
+            "icon-ignore-placement": true,
+          },
+          paint: {
+            "icon-opacity": ["coalesce", ["get", "iconOpacity"], 0.55],
+          },
+        },
+        MAP_LAYER_SPECIES_AURA
+      );
+
       map.on("mousemove", (event) => {
-        const hoveredSpecies = map.queryRenderedFeatures(event.point, {
-          layers: [MAP_LAYER_SPECIES_HIT],
-        })[0] as MapGeoJSONFeature | undefined;
+        const activeMap = map;
+        if (!activeMap) return;
+
+        const hitLayers: string[] = [];
+        if (!latestSelectedSpeciesIdRef.current) {
+          hitLayers.push(MAP_LAYER_SPECIES_HIT);
+          if (activeMap.getLayer(MAP_LAYER_EXT_HIT)) hitLayers.push(MAP_LAYER_EXT_HIT);
+        }
+
+        const hoveredSpecies = hitLayers.length
+          ? (activeMap.queryRenderedFeatures(event.point, {
+              layers: hitLayers,
+            })[0] as MapGeoJSONFeature | undefined)
+          : undefined;
         const hoveredRegionId = findRegionIdByLngLat(event.lngLat.lng, event.lngLat.lat);
 
         if (hoveredSpecies || hoveredRegionId) {
-          map.getCanvas().style.cursor = "pointer";
+          activeMap.getCanvas().style.cursor = "pointer";
         } else {
-          map.getCanvas().style.cursor = "";
+          activeMap.getCanvas().style.cursor = "";
         }
 
         setHoveredRegionId(hoveredRegionId);
       });
 
       map.on("mouseleave", () => {
-        map.getCanvas().style.cursor = "";
+        const activeMap = map;
+        if (!activeMap) return;
+        activeMap.getCanvas().style.cursor = "";
         setHoveredRegionId(null);
       });
 
       map.on("click", (event) => {
-        const speciesFeature = map.queryRenderedFeatures(event.point, {
-          layers: [MAP_LAYER_SPECIES_HIT],
+        const activeMap = map;
+        if (!activeMap) return;
+
+        const colonyFeature = activeMap.queryRenderedFeatures(event.point, {
+          layers: [MAP_LAYER_COLONY_SYMBOL],
         })[0] as MapGeoJSONFeature | undefined;
-        if (speciesFeature) {
-          const nextSpeciesId = speciesFeature.properties?.id;
+        if (colonyFeature) {
+          const nextSpeciesId = colonyFeature.properties?.speciesId;
           if (typeof nextSpeciesId === "string") {
-            actionRefs.current.openSpecies(nextSpeciesId);
+            const geom = colonyFeature.geometry as GeoJSON.Point;
+            const featureLngLat: [number, number] = [geom.coordinates[0], geom.coordinates[1]];
+            const pointId = colonyFeature.properties?.pointId;
+            selectedPrimaryPointIdRef.current = typeof pointId === "string" ? pointId : null;
+            speciesClickOriginRef.current = featureLngLat;
+            cameraPositionedForSpeciesRef.current = null;
+            actionRefs.current.openSpecies(nextSpeciesId, featureLngLat);
             return;
           }
         }
 
+        if (!latestSelectedSpeciesIdRef.current) {
+          const coreFeature = activeMap.queryRenderedFeatures(event.point, {
+            layers: [MAP_LAYER_SPECIES_HIT],
+          })[0] as MapGeoJSONFeature | undefined;
+          if (coreFeature) {
+            const nextSpeciesId = coreFeature.properties?.id;
+            if (typeof nextSpeciesId === "string") {
+              const geom = coreFeature.geometry as GeoJSON.Point;
+              const featureLngLat: [number, number] = [geom.coordinates[0], geom.coordinates[1]];
+              const pointId = coreFeature.properties?.pointId;
+              selectedPrimaryPointIdRef.current = typeof pointId === "string" ? pointId : null;
+              speciesClickOriginRef.current = featureLngLat;
+              cameraPositionedForSpeciesRef.current = null;
+              actionRefs.current.openSpecies(nextSpeciesId, featureLngLat);
+              return;
+            }
+          }
+
+          if (activeMap.getLayer(MAP_LAYER_EXT_HIT)) {
+            const extFeature = activeMap.queryRenderedFeatures(event.point, {
+              layers: [MAP_LAYER_EXT_HIT],
+            })[0] as MapGeoJSONFeature | undefined;
+            if (extFeature) {
+              const nextSpeciesId = extFeature.properties?.id;
+              if (typeof nextSpeciesId === "string") {
+                const geom = extFeature.geometry as GeoJSON.Point;
+                const featureLngLat: [number, number] = [geom.coordinates[0], geom.coordinates[1]];
+                const pointId = extFeature.properties?.pointId;
+                selectedPrimaryPointIdRef.current = typeof pointId === "string" ? pointId : null;
+                speciesClickOriginRef.current = featureLngLat;
+                cameraPositionedForSpeciesRef.current = null;
+                actionRefs.current.openSpecies(nextSpeciesId, featureLngLat);
+                return;
+              }
+            }
+          }
+        }
+
         const nextRegionId = findRegionIdByLngLat(event.lngLat.lng, event.lngLat.lat);
+
+        actionRefs.current.triggerAmbient(
+          event.lngLat.lat,
+          event.lngLat.lng,
+          nextRegionId
+        );
+
         if (nextRegionId) {
           const isClosingRegion = latestFocusRegionIdRef.current === nextRegionId;
           regionFocusAnchorRef.current = isClosingRegion
@@ -1065,6 +1830,7 @@ export default function AustraliaMap() {
         }
 
         if (latestSelectedSpeciesIdRef.current) {
+          selectedPrimaryPointIdRef.current = null;
           actionRefs.current.setSelectedSpecies(null);
           return;
         }
@@ -1075,17 +1841,52 @@ export default function AustraliaMap() {
         }
       });
 
-      isMapReadyRef.current = true;
-      setMapBooted(true);
+        map.resize();
+        window.requestAnimationFrame(() => {
+          const currentMap = mapRef.current;
+          if (!currentMap) return;
+          currentMap.resize();
+          isMapReadyRef.current = true;
+          setMapErrorMessage(null);
+          setMapBooted(true);
+          setMapReadyRef.current(true);
+        });
+      };
+
+      // Map load timeout (PRD §8.2) — 30s
+      timeoutId = window.setTimeout(() => {
+        if (!isMapReadyRef.current) {
+          setMapLoadTimeout(true);
+        }
+      }, 30_000);
+
+      map.on("load", () => {
+        if (timeoutId !== null) {
+          window.clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+        void handleLoad();
+      });
     };
 
-    map.on("load", () => {
-      void handleLoad();
-    });
+    void initializeMap();
 
     return () => {
+      isDisposed = true;
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      if (speciesFitBoundsTimerRef.current !== null) {
+        window.clearTimeout(speciesFitBoundsTimerRef.current);
+        speciesFitBoundsTimerRef.current = null;
+      }
       selectedMarkerRef.current?.remove();
       selectedMarkerRef.current = null;
+      if (colonyPulseRafRef.current !== null) {
+        window.cancelAnimationFrame(colonyPulseRafRef.current);
+        colonyPulseRafRef.current = null;
+      }
       resizeObserverRef.current?.disconnect();
       resizeObserverRef.current = null;
       if (resizeRafRef.current !== null) {
@@ -1093,10 +1894,17 @@ export default function AustraliaMap() {
         resizeRafRef.current = null;
       }
       isMapReadyRef.current = false;
-      map.remove();
-      mapRef.current = null;
+      cameraPositionedForSpeciesRef.current = null;
+      setMapBooted(false);
+      setMapLoadTimeout(false);
+      setMapErrorMessage(null);
+      setMapReadyRef.current(false);
+      map?.remove();
+      if (mapRef.current === map) {
+        mapRef.current = null;
+      }
     };
-  }, [mapConfig.style]);
+  }, [mapConfig.provider, mapConfig.style]);
 
   React.useEffect(() => {
     if (!mapBooted) return;
@@ -1108,11 +1916,76 @@ export default function AustraliaMap() {
   }, [syncSpeciesSource]);
 
   React.useEffect(() => {
-    if (!mapBooted) return;
+    syncColonySource();
+  }, [syncColonySource]);
+
+  React.useEffect(() => {
     const map = mapRef.current;
     if (!map || !isMapReadyRef.current) return;
+    const src = map.getSource(MAP_SOURCE_EXT) as GeoJSONSource | undefined;
+    if (src) {
+      src.setData(extSourceData as GeoJSON.FeatureCollection);
+    }
+  }, [extSourceData]);
+
+  React.useEffect(() => {
+    if (!mapBooted) return;
     syncCamera();
-  }, [mapBooted, syncCamera]);
+  }, [mapBooted, focusRegionId, syncCamera]);
+
+  React.useEffect(() => {
+    if (speciesFitBoundsTimerRef.current !== null) {
+      window.clearTimeout(speciesFitBoundsTimerRef.current);
+      speciesFitBoundsTimerRef.current = null;
+    }
+
+    if (!selectedSpeciesId) {
+      cameraPositionedForSpeciesRef.current = null;
+      selectedPrimaryPointIdRef.current = null;
+      speciesClickOriginRef.current = null;
+    }
+
+    if (!mapBooted) return;
+    syncCamera();
+  }, [mapBooted, selectedSpeciesId, syncCamera]);
+
+  React.useEffect(() => {
+    if (!mapBooted || !selectedSpeciesId || selectedSpeciesId.startsWith("ext_")) {
+      return;
+    }
+
+    if (!speciesClickOriginRef.current) {
+      return;
+    }
+
+    syncCamera();
+  }, [mapBooted, selectedSpeciesClickLngLat, selectedSpeciesId, syncCamera]);
+
+  React.useEffect(() => {
+    if (colonyPulseRafRef.current !== null) {
+      window.cancelAnimationFrame(colonyPulseRafRef.current);
+      colonyPulseRafRef.current = null;
+    }
+
+    if (!selectedSpecies?.isVisibleOnMap || shouldReduceMotion) {
+      setColonyPulseScale(1);
+      return;
+    }
+
+    const tick = (timestamp: number) => {
+      setColonyPulseScale(1 + Math.sin(timestamp / 420) * 0.06);
+      colonyPulseRafRef.current = window.requestAnimationFrame(tick);
+    };
+
+    colonyPulseRafRef.current = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (colonyPulseRafRef.current !== null) {
+        window.cancelAnimationFrame(colonyPulseRafRef.current);
+        colonyPulseRafRef.current = null;
+      }
+    };
+  }, [selectedSpecies?.id, selectedSpecies?.isVisibleOnMap, shouldReduceMotion]);
 
   React.useEffect(() => {
     const map = mapRef.current;
@@ -1126,13 +1999,16 @@ export default function AustraliaMap() {
       return;
     }
 
+    const lngLat: [number, number] = primarySelectedPoint?.coordinates
+      ?? [selectedSpecies.geoPoint.lng, selectedSpecies.geoPoint.lat];
+
     const host = document.createElement("div");
     const marker = new maplibregl.Marker({
       element: host,
       anchor: "center",
-      offset: [0, -6],
+      offset: [0, 0],
     })
-      .setLngLat([selectedSpecies.geoPoint.lng, selectedSpecies.geoPoint.lat])
+      .setLngLat(lngLat)
       .addTo(map);
 
     selectedMarkerRef.current = marker;
@@ -1145,7 +2021,14 @@ export default function AustraliaMap() {
       }
       setSelectedMarkerHost(null);
     };
-  }, [selectedSpecies?.geoPoint.lat, selectedSpecies?.geoPoint.lng, selectedSpecies?.id, selectedSpecies?.isVisibleOnMap]);
+  }, [
+    primarySelectedPoint,
+    selectedSpecies?.geoPoint.lat,
+    selectedSpecies?.geoPoint.lng,
+    selectedSpecies?.id,
+    selectedSpecies?.isVisibleOnMap,
+    selectedSpeciesClickLngLat,
+  ]);
 
   return (
     <div ref={frameRef} className="relative h-full w-full overflow-hidden rounded-[2rem]">
@@ -1164,6 +2047,11 @@ export default function AustraliaMap() {
         className="absolute inset-0 rounded-[2rem]"
         aria-label="澳大利亚高精度地图"
       />
+      <div
+        id="atlas-cloud-layer"
+        className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-[2rem]"
+        aria-hidden
+      />
 
       <div className="pointer-events-none absolute inset-0 rounded-[2rem] border border-[rgba(145,117,84,0.18)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]" />
 
@@ -1179,11 +2067,39 @@ export default function AustraliaMap() {
         </div>
       </div>
 
-      {!mapBooted && (
+      {webGLUnsupported && (
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
+          <div className="atlas-map-loading">
+            <p className="text-base font-display" style={{ color: "var(--earth-deep)" }}>
+              浏览器不支持地图渲染
+            </p>
+            <p className="mt-2 text-sm" style={{ color: "var(--warm-gray)" }}>
+              请使用 Chrome、Firefox 或 Safari 最新版本访问
+            </p>
+          </div>
+        </div>
+      )}
+
+      {!mapBooted && !webGLUnsupported && (
         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
           <div className="atlas-map-loading">
             <span className="atlas-kicker">Atlas Map</span>
-            <p>正在铺开澳大利亚的地理底图</p>
+            {mapLoadTimeout ? (
+              <p style={{ color: "var(--coral)" }}>
+                地图底图加载超时。请检查网络连接，或确认 MAPTILER_KEY 配置是否正确。
+              </p>
+            ) : (
+              <p>{mapErrorMessage ? "地图底图暂时未响应，正在尝试恢复。" : "正在铺开澳大利亚的地理底图"}</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {mapErrorMessage && (
+        <div className="pointer-events-none absolute inset-x-4 top-20 z-20 flex justify-center">
+          <div className="atlas-map-error">
+            <span className="atlas-kicker">Map Notice</span>
+            <p>{mapErrorMessage}</p>
           </div>
         </div>
       )}
@@ -1214,6 +2130,29 @@ export default function AustraliaMap() {
         </div>
       </div>
 
+      {mapBooted &&
+        (selectedSpecies || selectedExtSpecies) &&
+        cloudDistributionPoints.length > 1 && (
+          <div className="pointer-events-none absolute bottom-5 left-5 z-20">
+            <div
+              className="atlas-distribution-guide"
+              style={
+                {
+                  "--distribution-guide-color": selectedDistributionColor,
+                } as React.CSSProperties
+              }
+            >
+              <span className="atlas-kicker">Distribution Trace</span>
+              <div className="atlas-distribution-guide__sample" aria-hidden>
+                <span className="atlas-distribution-guide__dot atlas-distribution-guide__dot--active" />
+                <span className="atlas-distribution-guide__line" />
+                <span className="atlas-distribution-guide__dot" />
+              </div>
+              <p>虚线连接当前观察点与其他分布簇</p>
+            </div>
+          </div>
+        )}
+
       {selectedMarkerHost &&
         selectedSpecies &&
         selectedSpecies.isVisibleOnMap &&
@@ -1226,6 +2165,16 @@ export default function AustraliaMap() {
           />,
           selectedMarkerHost
         )}
+
+      {mapBooted && (selectedSpecies || selectedExtSpecies) && cloudDistributionPoints.length > 0 && (
+        <CloudEffectLayer
+          speciesId={selectedSpeciesId}
+          color={selectedDistributionColor}
+          group={selectedSpecies?.group || selectedExtSpecies?.taxonomicClass || "native"}
+          distributionPoints={cloudDistributionPoints}
+          map={mapRef.current}
+        />
+      )}
     </div>
   );
 }

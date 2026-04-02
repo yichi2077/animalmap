@@ -3,12 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo --hostname 0.0.0.0 --port 3000",
+    "clean:next": "rm -rf .next",
+    "dev:clean": "npm run clean:next && next dev --turbo --hostname 0.0.0.0 --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "validate:map": "node scripts/validate-map-data.mjs",
     "validate:regions": "node scripts/validate-region-hit.mjs",
+    "validate:assets": "node scripts/validate-assets.mjs",
+    "validate:content": "node scripts/validate-content.mjs",
+    "validate:all": "npm run validate:assets && npm run validate:content",
+    "audit:ala-core": "node scripts/audit-ala-core-species.mjs",
+    "generate:core-snapshots": "node scripts/generate-core-species-snapshots.mjs",
+    "setup:evidence": "node scripts/add-evidence-types.mjs",
+    "predev": "node scripts/validate-assets.mjs",
+    "prebuild": "node scripts/validate-assets.mjs && node scripts/validate-content.mjs",
     "simplify:states": "mapshaper data/geo/australian-states.min.json -clean -o format=geojson data/geo/australian-states.min.json"
   },
   "dependencies": {
@@ -27,6 +37,7 @@
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.2.0",
     "mapshaper": "^0.6.113",
+    "playwright": "^1.59.1",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.4.0"

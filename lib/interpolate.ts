@@ -1,8 +1,11 @@
+export type EvidenceType = "inferred" | "historical" | "contemporary";
+
 export interface KeyframeData {
   year: number;
   populationScore: number;
   distributionType: "stable" | "expansion" | "contraction" | "extinction" | "recovery";
   narrative: string;
+  evidenceType: EvidenceType;
 }
 
 /**
@@ -11,9 +14,14 @@ export interface KeyframeData {
 export function interpolateKeyframes(
   keyframes: KeyframeData[],
   year: number
-): { populationScore: number; distributionType: string; narrative: string } {
+): { populationScore: number; distributionType: string; narrative: string; evidenceType: EvidenceType } {
   if (keyframes.length === 0) {
-    return { populationScore: 0, distributionType: "stable", narrative: "" };
+    return {
+      populationScore: 0,
+      distributionType: "stable",
+      narrative: "",
+      evidenceType: "inferred",
+    };
   }
 
   const sorted = [...keyframes].sort((a, b) => a.year - b.year);
@@ -50,10 +58,12 @@ export function interpolateKeyframes(
     before.populationScore + (after.populationScore - before.populationScore) * eased;
 
   // Use the closer keyframe's distribution type
-  const distributionType = progress < 0.5 ? before.distributionType : after.distributionType;
-  const narrative = progress < 0.5 ? before.narrative : after.narrative;
+  const chosenFrame = progress < 0.5 ? before : after;
+  const distributionType = chosenFrame.distributionType;
+  const narrative = chosenFrame.narrative;
+  const evidenceType = chosenFrame.evidenceType ?? "historical";
 
-  return { populationScore, distributionType, narrative };
+  return { populationScore, distributionType, narrative, evidenceType };
 }
 
 /**

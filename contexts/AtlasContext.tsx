@@ -9,9 +9,13 @@ interface AtlasState {
   isPlaying: boolean;
   focusRegionId: string | null;
   selectedSpeciesId: string | null;
+  selectedSpeciesClickLngLat: [number, number] | null;
   searchKeyword: string;
   hasSeenIntro: boolean;
   isNowMode: boolean;
+  isMapReady: boolean;
+  ambientAudioEnabled: boolean;
+  currentAmbientZoneId: string | null;
 }
 
 interface AtlasActions {
@@ -22,9 +26,12 @@ interface AtlasActions {
   jumpToNow: () => void;
   setFocusRegion: (regionId: string | null) => void;
   setSelectedSpecies: (speciesId: string | null) => void;
-  openSpecies: (speciesId: string) => void;
+  openSpecies: (speciesId: string, clickLngLat?: [number, number]) => void;
   setSearchKeyword: (keyword: string) => void;
   markIntroSeen: () => void;
+  setMapReady: (ready: boolean) => void;
+  setAmbientAudioEnabled: (enabled: boolean) => void;
+  setCurrentAmbientZoneId: (zoneId: string | null) => void;
 }
 
 const AtlasContext = createContext<(AtlasState & AtlasActions) | null>(null);
@@ -34,8 +41,12 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [focusRegionId, setFocusRegionId] = useState<string | null>(null);
   const [selectedSpeciesId, setSelectedSpeciesId] = useState<string | null>(null);
+  const [selectedSpeciesClickLngLat, setSelectedSpeciesClickLngLat] = useState<[number, number] | null>(null);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
+  const [isMapReady, setMapReady] = useState(false);
+  const [ambientAudioEnabled, setAmbientAudioEnabledRaw] = useState(true);
+  const [currentAmbientZoneId, setCurrentAmbientZoneId] = useState<string | null>(null);
   const playRef = useRef<number | null>(null);
 
   const isNowMode = currentYear >= YEAR_NOW;
@@ -72,11 +83,15 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
 
   const setSelectedSpecies = useCallback((speciesId: string | null) => {
     setSelectedSpeciesId(speciesId);
+    if (!speciesId) setSelectedSpeciesClickLngLat(null);
   }, []);
 
-  const openSpecies = useCallback((speciesId: string) => {
+  const openSpecies = useCallback((speciesId: string, clickLngLat?: [number, number]) => {
     setSelectedSpeciesId(speciesId);
-    setFocusRegionId((prev) => getPreferredRegionId(speciesId, prev));
+    setSelectedSpeciesClickLngLat(clickLngLat ?? null);
+    if (!speciesId.startsWith("ext_")) {
+      setFocusRegionId((prev) => getPreferredRegionId(speciesId, prev));
+    }
   }, []);
 
   const markIntroSeen = useCallback(() => {
@@ -86,15 +101,23 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Check localStorage for intro seen
+  const setAmbientAudioEnabled = useCallback((enabled: boolean) => {
+    setAmbientAudioEnabledRaw(enabled);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("atlas-ambient-enabled", String(enabled));
+    }
+  }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const seen = localStorage.getItem("atlas-intro-seen");
       if (seen === "true") setHasSeenIntro(true);
+
+      const ambientPref = localStorage.getItem("atlas-ambient-enabled");
+      if (ambientPref === "false") setAmbientAudioEnabledRaw(false);
     }
   }, []);
 
-  // Playback loop
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -131,9 +154,13 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
         isPlaying,
         focusRegionId,
         selectedSpeciesId,
+        selectedSpeciesClickLngLat,
         searchKeyword,
         hasSeenIntro,
         isNowMode,
+        isMapReady,
+        ambientAudioEnabled,
+        currentAmbientZoneId,
         setCurrentYear,
         togglePlay,
         stopPlay,
@@ -144,6 +171,9 @@ export function AtlasProvider({ children }: { children: React.ReactNode }) {
         openSpecies,
         setSearchKeyword,
         markIntroSeen,
+        setMapReady,
+        setAmbientAudioEnabled,
+        setCurrentAmbientZoneId,
       }}
     >
       {children}

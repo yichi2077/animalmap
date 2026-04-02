@@ -1,39 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
-
 :root {
-  --parchment: #f8f1e6;
-  --parchment-soft: #fdf7ef;
-  --parchment-dark: #efdfc4;
-  --sand: #ddc69e;
-  --earth: #6f5d45;
-  --earth-light: #8c7558;
-  --earth-deep: #4b3d2c;
-  --leaf: #7da56c;
-  --leaf-light: #c8d9c0;
-  --ocean: #9ec3d8;
-  --ocean-light: #e5eff5;
-  --coral: #e08a58;
-  --coral-light: #fce8de;
-  --mint: #64ba9c;
-  --sky: #6cb3d9;
-  --warm-gray: #675744;
-  --text-primary: #433528;
-  --text-secondary: #594a3a;
-  --line-soft: rgba(148, 120, 85, 0.18);
-  --line-strong: rgba(126, 99, 66, 0.28);
+  --parchment: oklch(0.95 0.026 84);
+  --parchment-soft: oklch(0.978 0.018 88);
+  --parchment-dark: oklch(0.9 0.044 84);
+  --sand: oklch(0.84 0.06 82);
+  --earth: oklch(0.49 0.053 68);
+  --earth-light: oklch(0.58 0.055 72);
+  --earth-deep: oklch(0.32 0.04 58);
+  --bark: oklch(0.38 0.05 58);
+  --leaf: oklch(0.66 0.094 137);
+  --leaf-light: oklch(0.9 0.04 132);
+  --gumleaf: oklch(0.61 0.08 145);
+  --eucalyptus: oklch(0.72 0.062 153);
+  --ocean: oklch(0.79 0.07 228);
+  --ocean-light: oklch(0.94 0.03 222);
+  --lagoon: oklch(0.72 0.08 210);
+  --coral: oklch(0.69 0.138 48);
+  --coral-light: oklch(0.92 0.05 46);
+  --clay: oklch(0.62 0.1 44);
+  --mint: oklch(0.72 0.086 165);
+  --sky: oklch(0.75 0.08 235);
+  --warm-gray: oklch(0.45 0.027 62);
+  --text-primary: oklch(0.28 0.03 58);
+  --text-secondary: oklch(0.36 0.028 60);
+  --line-soft: color-mix(in oklab, var(--earth-light) 20%, transparent);
+  --line-strong: color-mix(in oklab, var(--earth-light) 32%, transparent);
   --shadow-soft:
-    0 18px 40px rgba(110, 87, 61, 0.12),
-    0 4px 16px rgba(110, 87, 61, 0.08);
+    0 18px 40px rgba(90, 71, 45, 0.12),
+    0 4px 16px rgba(90, 71, 45, 0.08);
   --shadow-panel:
-    0 28px 64px rgba(92, 72, 48, 0.18),
-    0 8px 24px rgba(92, 72, 48, 0.08);
+    0 28px 64px rgba(77, 65, 39, 0.18),
+    0 8px 24px rgba(77, 65, 39, 0.08);
   --shadow-float:
-    0 24px 52px rgba(101, 79, 54, 0.16),
-    0 10px 18px rgba(101, 79, 54, 0.08);
+    0 24px 52px rgba(95, 76, 49, 0.16),
+    0 10px 18px rgba(95, 76, 49, 0.08);
+  --editorial-max: min(90rem, calc(100vw - 2.5rem));
+  --editorial-max-tight: min(84rem, calc(100vw - 2rem));
+  --header-shell:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.96), rgba(245, 236, 220, 0.9));
+  --chapter-shell:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(242, 233, 215, 0.95));
+  --panel-scrim: rgba(255, 249, 240, 0.76);
+  --section-soft: rgba(248, 240, 226, 0.74);
+  --section-strong: rgba(244, 234, 214, 0.82);
+  --line-editorial: rgba(161, 136, 103, 0.24);
 }
 
 * {
@@ -53,6 +68,17 @@ html, body {
   text-rendering: optimizeLegibility;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 240, 0.56), transparent 16%),
+    linear-gradient(0deg, rgba(238, 224, 199, 0.22), transparent 18%);
+  z-index: 0;
+}
+
 /* Parchment paper texture overlay */
 .parchment-bg {
   background:
@@ -68,9 +94,24 @@ html, body {
 
 .atlas-shell {
   background:
-    radial-gradient(circle at 14% 14%, rgba(229, 201, 154, 0.22), transparent 20%),
-    radial-gradient(circle at 88% 18%, rgba(158, 195, 216, 0.18), transparent 18%),
-    radial-gradient(circle at 52% 100%, rgba(224, 138, 88, 0.12), transparent 28%);
+    radial-gradient(circle at 13% 14%, color-mix(in oklab, var(--sand) 44%, transparent) 0%, transparent 22%),
+    radial-gradient(circle at 84% 16%, color-mix(in oklab, var(--ocean) 30%, transparent) 0%, transparent 18%),
+    radial-gradient(circle at 76% 78%, color-mix(in oklab, var(--gumleaf) 18%, transparent) 0%, transparent 21%),
+    radial-gradient(circle at 52% 100%, color-mix(in oklab, var(--clay) 18%, transparent) 0%, transparent 30%);
+}
+
+.atlas-main-stage {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.atlas-stage-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 60%, rgba(103, 77, 48, 0.08) 100%),
+    linear-gradient(180deg, rgba(252, 248, 241, 0.16), transparent 22%, transparent 78%, rgba(229, 214, 189, 0.12));
 }
 
 .atlas-glow {
@@ -86,7 +127,7 @@ html, body {
   left: 1.25rem;
   width: 16rem;
   height: 12rem;
-  background: radial-gradient(circle, rgba(220, 191, 143, 0.42), transparent 68%);
+  background: radial-gradient(circle, rgba(198, 168, 117, 0.42), transparent 68%);
 }
 
 .atlas-glow-right {
@@ -94,7 +135,7 @@ html, body {
   right: 18rem;
   width: 20rem;
   height: 14rem;
-  background: radial-gradient(circle, rgba(170, 206, 222, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(135, 183, 176, 0.26), transparent 70%);
 }
 
 .atlas-glow-bottom {
@@ -102,7 +143,9 @@ html, body {
   left: 18%;
   width: 34rem;
   height: 10rem;
-  background: radial-gradient(circle, rgba(224, 138, 88, 0.18), transparent 72%);
+  background:
+    radial-gradient(circle, rgba(175, 124, 76, 0.16), transparent 64%),
+    radial-gradient(circle at 58% 44%, rgba(104, 142, 95, 0.1), transparent 72%);
 }
 
 .paper-texture {
@@ -128,11 +171,29 @@ html, body {
 /* Storybook panel style */
 .storybook-panel {
   background:
-    linear-gradient(180deg, rgba(255, 251, 245, 0.98) 0%, rgba(250, 242, 231, 0.96) 56%, rgba(240, 223, 194, 0.98) 100%);
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98) 0%, rgba(250, 244, 234, 0.97) 48%, rgba(238, 227, 205, 0.98) 100%);
   border-radius: 1.65rem;
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--line-soft);
   position: relative;
+}
+
+.atlas-header-panel {
+  background: var(--header-shell);
+  border: 1px solid rgba(170, 146, 112, 0.18);
+  box-shadow:
+    0 22px 46px rgba(93, 72, 45, 0.14),
+    0 8px 18px rgba(93, 72, 45, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+.atlas-header-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0.75rem;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  pointer-events: none;
 }
 
 .storybook-panel::before {
@@ -151,6 +212,131 @@ html, body {
 
 .storybook-float {
   box-shadow: var(--shadow-float);
+}
+
+.atlas-section-card {
+  position: relative;
+  border-radius: 1.35rem;
+  border: 1px solid rgba(170, 146, 112, 0.16);
+  background: var(--section-soft);
+  box-shadow: 0 14px 30px rgba(93, 72, 45, 0.08);
+}
+
+.atlas-section-card-strong {
+  background: var(--section-strong);
+  box-shadow: 0 20px 36px rgba(93, 72, 45, 0.1);
+}
+
+.atlas-panel-shell {
+  background: var(--chapter-shell);
+  border: 1px solid rgba(170, 146, 112, 0.18);
+  box-shadow:
+    0 32px 72px rgba(80, 61, 36, 0.18),
+    0 12px 28px rgba(80, 61, 36, 0.08);
+}
+
+.atlas-panel-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0.8rem;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  pointer-events: none;
+}
+
+.atlas-panel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(163, 136, 103, 0.4) transparent;
+}
+
+.atlas-panel-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.atlas-panel-scroll::-webkit-scrollbar-thumb {
+  background: rgba(163, 136, 103, 0.34);
+  border-radius: 999px;
+}
+
+.atlas-panel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.atlas-masthead-title {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.015em;
+}
+
+.atlas-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(170, 146, 112, 0), rgba(170, 146, 112, 0.42), rgba(170, 146, 112, 0));
+}
+
+.atlas-legend-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  box-shadow: 0 0 0 1px rgba(255, 250, 242, 0.8), 0 5px 10px rgba(94, 74, 47, 0.12);
+}
+
+.atlas-timeline-shell {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.98), rgba(240, 230, 212, 0.94));
+  border: 1px solid rgba(170, 146, 112, 0.18);
+  box-shadow:
+    0 24px 54px rgba(89, 69, 41, 0.16),
+    0 10px 22px rgba(89, 69, 41, 0.08);
+}
+
+.atlas-timeline-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0.75rem;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  pointer-events: none;
+}
+
+.atlas-timeline-ruler {
+  background:
+    linear-gradient(180deg, rgba(252, 248, 240, 0.94), rgba(235, 227, 211, 0.88));
+  border: 1px solid rgba(203, 186, 157, 0.42);
+  box-shadow: inset 0 1px 5px rgba(150, 130, 98, 0.16);
+}
+
+.atlas-stage-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 2.2rem;
+  border: 1px solid rgba(173, 145, 110, 0.18);
+  background:
+    radial-gradient(circle at 15% 22%, rgba(145, 181, 156, 0.1), transparent 18%),
+    radial-gradient(circle at 84% 14%, rgba(159, 194, 208, 0.08), transparent 16%),
+    linear-gradient(180deg, rgba(255, 251, 245, 0.16), rgba(255, 251, 245, 0.02));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24),
+    0 34px 70px rgba(94, 74, 47, 0.12);
+  pointer-events: none;
+}
+
+.atlas-stage-caption {
+  position: absolute;
+  left: 1.6rem;
+  bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 19rem;
+  pointer-events: none;
+}
+
+.atlas-stage-caption p {
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: rgba(99, 79, 58, 0.78);
 }
 
 .atlas-kicker {
@@ -178,17 +364,17 @@ html, body {
   gap: 0.45rem;
   padding: 0.38rem 0.8rem;
   border-radius: 999px;
-  background: rgba(255, 249, 241, 0.72);
-  border: 1px solid rgba(170, 146, 112, 0.22);
-  color: var(--warm-gray);
+  background: rgba(252, 248, 241, 0.74);
+  border: 1px solid rgba(149, 132, 98, 0.22);
+  color: color-mix(in oklab, var(--earth) 78%, var(--leaf) 22%);
   font-size: 0.72rem;
   line-height: 1;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .atlas-chip-strong {
-  color: var(--earth-deep);
-  background: rgba(250, 238, 217, 0.88);
+  color: var(--bark);
+  background: linear-gradient(180deg, rgba(247, 236, 214, 0.92), rgba(232, 223, 198, 0.9));
 }
 
 .atlas-meta-separator {
@@ -201,7 +387,7 @@ html, body {
   outline: none;
   box-shadow:
     0 0 0 2px rgba(255, 248, 238, 0.92),
-    0 0 0 5px rgba(224, 138, 88, 0.2),
+    0 0 0 5px rgba(110, 159, 98, 0.2),
     0 12px 28px rgba(111, 93, 69, 0.16);
 }
 
@@ -235,10 +421,19 @@ svg [role="button"]:focus-visible {
 }
 
 .maplibregl-map {
+  width: 100%;
+  height: 100%;
   font-family: 'Noto Sans SC', system-ui, sans-serif;
 }
 
+.maplibregl-canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
 .maplibregl-canvas {
+  width: 100%;
+  height: 100%;
   border-radius: 2rem;
 }
 
@@ -263,9 +458,9 @@ svg [role="button"]:focus-visible {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  border: 1px solid rgba(160, 131, 97, 0.16);
-  background: rgba(255, 249, 239, 0.78);
-  color: rgba(93, 76, 58, 0.82);
+  border: 1px solid rgba(128, 123, 90, 0.18);
+  background: linear-gradient(180deg, rgba(251, 247, 238, 0.82), rgba(241, 235, 221, 0.82));
+  color: color-mix(in oklab, var(--earth-deep) 72%, var(--leaf) 28%);
   padding: 0.5rem 0.85rem;
   font-size: 0.72rem;
   line-height: 1;
@@ -277,8 +472,10 @@ svg [role="button"]:focus-visible {
 .atlas-map-loading {
   min-width: 18rem;
   border-radius: 1.5rem;
-  border: 1px solid rgba(160, 131, 97, 0.14);
-  background: rgba(255, 248, 239, 0.88);
+  border: 1px solid rgba(137, 126, 95, 0.14);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(140, 182, 154, 0.09), transparent 22%),
+    linear-gradient(180deg, rgba(255, 249, 240, 0.9), rgba(247, 239, 225, 0.9));
   padding: 1rem 1.25rem;
   text-align: center;
   box-shadow: 0 22px 46px rgba(94, 74, 47, 0.1);
@@ -290,10 +487,38 @@ svg [role="button"]:focus-visible {
   color: var(--text-secondary);
 }
 
+.atlas-map-error {
+  max-width: min(26rem, 100%);
+  border-radius: 1.2rem;
+  border: 1px solid rgba(181, 111, 64, 0.18);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(210, 140, 88, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 245, 236, 0.94), rgba(248, 236, 224, 0.92));
+  padding: 0.85rem 1rem;
+  box-shadow: 0 18px 34px rgba(94, 74, 47, 0.12);
+  text-align: center;
+}
+
+.atlas-map-error p {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 .atlas-region-transition-wash {
   background:
-    radial-gradient(circle at 50% 50%, rgba(247, 233, 206, 0.24), transparent 34%),
-    radial-gradient(circle at 50% 50%, rgba(224, 138, 88, 0.08), transparent 58%);
+    radial-gradient(circle at 50% 50%, rgba(238, 226, 190, 0.24), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(113, 155, 101, 0.08), transparent 58%);
 }
 
 .atlas-region-transition-card {
@@ -303,8 +528,9 @@ svg [role="button"]:focus-visible {
   transform: translateX(-50%);
   min-width: 14rem;
   border-radius: 999px;
-  border: 1px solid rgba(160, 131, 97, 0.18);
-  background: rgba(255, 249, 240, 0.88);
+  border: 1px solid rgba(140, 125, 90, 0.18);
+  background:
+    linear-gradient(180deg, rgba(252, 248, 240, 0.9), rgba(243, 236, 220, 0.88));
   padding: 0.85rem 1.2rem;
   text-align: center;
   box-shadow:
@@ -343,8 +569,10 @@ svg [role="button"]:focus-visible {
 .atlas-selected-marker {
   position: relative;
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -360,8 +588,8 @@ svg [role="button"]:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: 100%;
+  height: 100%;
 }
 
 .atlas-selected-marker__ring {
@@ -373,7 +601,10 @@ svg [role="button"]:focus-visible {
   transform: translate(-50%, -50%);
   transform-origin: center center;
   border-radius: 999px;
-  border: 3px dashed rgba(100, 186, 156, 0.72);
+  border: 3px dashed color-mix(in srgb, var(--selected-marker-color, #7da56c) 68%, #fff3e1 32%);
+  box-shadow:
+    0 0 0 2px rgba(255, 248, 236, 0.9),
+    0 0 0 10px color-mix(in srgb, var(--selected-marker-color, #7da56c) 18%, transparent);
   animation: atlas-orbit 9s linear infinite;
 }
 
@@ -389,24 +620,35 @@ svg [role="button"]:focus-visible {
   transform: translate(-50%, -50%);
   transform-origin: center center;
   border-radius: 999px;
-  background: rgba(255, 250, 243, 0.96);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.99), rgba(255, 250, 243, 0.97) 38%, rgba(244, 236, 220, 0.98) 100%);
+  border: 4px solid color-mix(in srgb, var(--selected-marker-color, #7da56c) 78%, #8b7558 22%);
   box-shadow:
     0 18px 40px rgba(94, 74, 47, 0.16),
-    0 0 0 8px rgba(255, 247, 236, 0.55);
+    0 0 0 8px rgba(255, 247, 236, 0.72),
+    0 0 0 14px color-mix(in srgb, var(--selected-marker-color, #7da56c) 14%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset;
   backdrop-filter: blur(2px);
   animation: gentle-breathe 4s ease-in-out infinite;
 }
 
 .atlas-selected-marker__label {
-  margin-top: 0.7rem;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.65rem);
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 4.5rem;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid rgba(170, 146, 112, 0.2);
-  background: rgba(255, 249, 241, 0.92);
+  border: 1px solid rgba(145, 129, 95, 0.22);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, rgba(255, 250, 243, 0.94) 88%, var(--selected-marker-color, #7da56c) 12%),
+    color-mix(in srgb, rgba(241, 234, 220, 0.92) 86%, var(--selected-marker-color, #7da56c) 14%)
+  );
   color: var(--text-primary);
   font-size: 0.84rem;
   line-height: 1;
@@ -425,6 +667,56 @@ svg [role="button"]:focus-visible {
 .atlas-selected-marker.is-extinct .atlas-selected-marker__core {
   filter: grayscale(1);
   opacity: 0.7;
+}
+
+.atlas-distribution-guide {
+  --distribution-guide-color: #7da56c;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 15rem;
+  padding: 0.8rem 0.95rem 0.75rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(151, 126, 93, 0.18);
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.94), rgba(242, 234, 220, 0.9));
+  box-shadow:
+    0 18px 32px rgba(94, 74, 47, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.atlas-distribution-guide__sample {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.atlas-distribution-guide__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--distribution-guide-color) 62%, #fff4e0 38%);
+  box-shadow:
+    0 0 0 2px rgba(255, 248, 236, 0.92),
+    0 0 0 5px color-mix(in srgb, var(--distribution-guide-color) 24%, transparent);
+}
+
+.atlas-distribution-guide__dot--active {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: color-mix(in srgb, var(--distribution-guide-color) 78%, #fff7ec 22%);
+}
+
+.atlas-distribution-guide__line {
+  display: block;
+  width: 2.8rem;
+  border-top: 2px dashed color-mix(in srgb, var(--distribution-guide-color) 72%, #f7eddc 28%);
+}
+
+.atlas-distribution-guide p {
+  margin: 0;
+  color: color-mix(in oklab, var(--earth-deep) 78%, var(--distribution-guide-color) 22%);
+  font-size: 0.72rem;
+  line-height: 1.45;
 }
 
 @keyframes atlas-orbit {
@@ -498,5 +790,47 @@ svg [role="button"]:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ── Drawer 拖动手柄 ── */
+.drawer-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(170, 146, 112, 0.35);
+  margin: 0 auto;
+}
+
+/* ── 证据类型标签基础样式 ── */
+.evidence-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.58rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── 移动端 Drawer 遮罩 ── */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(58, 44, 30, 0.25);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+@media (max-width: 767px) {
+  .atlas-main-stage {
+    padding: 0.25rem;
+  }
+
+  .atlas-stage-caption {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
   }
 }

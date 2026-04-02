@@ -12,15 +12,61 @@
     "dangerStatus": "EX",
     "soundType": "ai_simulated",
     "story": "它曾是塔斯马尼亚最著名的掠食者，条纹如虎，身形似犬。1936年9月7日，最后一只袋狼在霍巴特动物园安静地闭上了眼睛，从此这个物种只存在于泛黄的照片和模糊的影像里。",
-    "illustration": "/assets/species/thylacine-illustration.svg",
-    "photo": "/assets/species/thylacine-photo.jpg",
-    "audio": "/assets/audio/thylacine.mp3",
     "color": "#8a7e6d",
     "extinctYear": 1936,
     "geoPoint": {
       "lng": 146.72,
       "lat": -41.58
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对全球保护状态与灭绝结论。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "National Museum of Australia",
+        "note": "用于核对澳大利亚历史物种档案与图文背景。",
+        "url": "https://www.nma.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -41.45,
+        "lng": 145.97,
+        "weight": 0.35
+      },
+      {
+        "lat": -42.15,
+        "lng": 146.82,
+        "weight": 0.25
+      },
+      {
+        "lat": -41.18,
+        "lng": 147.32,
+        "weight": 0.2
+      },
+      {
+        "lat": -42.88,
+        "lng": 146.35,
+        "weight": 0.12
+      },
+      {
+        "lat": -41.68,
+        "lng": 145.12,
+        "weight": 0.08
+      }
+    ]
   },
   {
     "id": "pig_footed_bandicoot",
@@ -39,15 +85,61 @@
     "dangerStatus": "EX",
     "soundType": "ai_simulated",
     "story": "这种小巧的有袋类动物有着像猪蹄一样的前脚，曾在澳大利亚干旱的内陆草原上轻盈奔跑。欧洲人带来的狐狸和猫让它在20世纪50年代彻底消失。",
-    "illustration": "/assets/species/pig-footed-bandicoot-illustration.svg",
-    "photo": "/assets/species/pig-footed-bandicoot-photo.jpg",
-    "audio": "/assets/audio/pig-footed-bandicoot.mp3",
     "color": "#9e8c6c",
     "extinctYear": 1950,
     "geoPoint": {
       "lng": 134.75,
       "lat": -29.01
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对全球保护状态与灭绝结论。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "National Museum of Australia",
+        "note": "用于核对澳大利亚历史物种档案与图文背景。",
+        "url": "https://www.nma.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -28.87,
+        "lng": 133.78,
+        "weight": 0.3
+      },
+      {
+        "lat": -31.42,
+        "lng": 137.52,
+        "weight": 0.22
+      },
+      {
+        "lat": -26.15,
+        "lng": 129.85,
+        "weight": 0.18
+      },
+      {
+        "lat": -33.18,
+        "lng": 141.65,
+        "weight": 0.15
+      },
+      {
+        "lat": -24.72,
+        "lng": 134.28,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "koala",
@@ -65,14 +157,65 @@
     "dangerStatus": "EN",
     "soundType": "real",
     "story": "考拉每天睡20个小时，只吃桉树叶，看起来像是世界上最悠闲的生物。但栖息地的快速消失和频繁的山火，让这个澳大利亚的国民偶像正面临前所未有的生存危机。",
-    "illustration": "/assets/species/koala-illustration.svg",
-    "photo": "/assets/species/koala-photo.jpg",
-    "audio": "/assets/audio/koala.mp3",
     "color": "#7da56c",
     "geoPoint": {
       "lng": 152.98,
       "lat": -27.47
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -27.47,
+        "lng": 152.97,
+        "weight": 0.28
+      },
+      {
+        "lat": -33.82,
+        "lng": 151.21,
+        "weight": 0.22
+      },
+      {
+        "lat": -37.65,
+        "lng": 145.72,
+        "weight": 0.18
+      },
+      {
+        "lat": -30.28,
+        "lng": 152.45,
+        "weight": 0.15
+      },
+      {
+        "lat": -35.12,
+        "lng": 138.62,
+        "weight": 0.1
+      },
+      {
+        "lat": -25.18,
+        "lng": 152.68,
+        "weight": 0.07
+      }
+    ]
   },
   {
     "id": "platypus",
@@ -90,14 +233,60 @@
     "dangerStatus": "NT",
     "soundType": "real",
     "story": "鸭子的嘴、水獭的脚、河狸的尾巴——当第一张鸭嘴兽标本被送到英国时，科学家们以为这是一个恶作剧。这种会产卵的哺乳动物是进化史上最奇妙的存在之一。",
-    "illustration": "/assets/species/platypus-illustration.svg",
-    "photo": "/assets/species/platypus-photo.jpg",
-    "audio": "/assets/audio/platypus.mp3",
     "color": "#78acc8",
     "geoPoint": {
       "lng": 145.48,
       "lat": -17.27
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -35.28,
+        "lng": 149.13,
+        "weight": 0.25
+      },
+      {
+        "lat": -37.82,
+        "lng": 145.95,
+        "weight": 0.22
+      },
+      {
+        "lat": -33.45,
+        "lng": 150.88,
+        "weight": 0.2
+      },
+      {
+        "lat": -41.42,
+        "lng": 146.18,
+        "weight": 0.18
+      },
+      {
+        "lat": -28.65,
+        "lng": 152.42,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "tasmanian_devil",
@@ -112,14 +301,60 @@
     "dangerStatus": "EN",
     "soundType": "real",
     "story": "它的叫声在夜晚听起来像恶魔的尖叫，这也是它名字的由来。作为世界上最大的肉食性有袋动物，袋獾正在与一种致命的面部肿瘤疾病抗争。",
-    "illustration": "/assets/species/tasmanian-devil-illustration.svg",
-    "photo": "/assets/species/tasmanian-devil-photo.jpg",
-    "audio": "/assets/audio/tasmanian-devil.mp3",
     "color": "#5c5040",
     "geoPoint": {
       "lng": 146.65,
       "lat": -42.05
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -42.18,
+        "lng": 146.32,
+        "weight": 0.32
+      },
+      {
+        "lat": -41.45,
+        "lng": 145.28,
+        "weight": 0.25
+      },
+      {
+        "lat": -42.85,
+        "lng": 147.32,
+        "weight": 0.2
+      },
+      {
+        "lat": -41.15,
+        "lng": 147.88,
+        "weight": 0.15
+      },
+      {
+        "lat": -43.12,
+        "lng": 145.82,
+        "weight": 0.08
+      }
+    ]
   },
   {
     "id": "bilby",
@@ -136,14 +371,60 @@
     "dangerStatus": "VU",
     "soundType": "real",
     "story": "大耳朵、长鼻子、丝绸般的灰蓝色皮毛——兔袋狸是澳大利亚的复活节兔子替代者。它们在沙漠中挖掘螺旋形的洞穴，是生态系统中重要的土壤工程师。",
-    "illustration": "/assets/species/bilby-illustration.svg",
-    "photo": "/assets/species/bilby-photo.jpg",
-    "audio": "/assets/audio/bilby.mp3",
     "color": "#96c8e4",
     "geoPoint": {
       "lng": 122.2,
       "lat": -20.5
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -23.57,
+        "lng": 131.82,
+        "weight": 0.3
+      },
+      {
+        "lat": -26.42,
+        "lng": 128.95,
+        "weight": 0.22
+      },
+      {
+        "lat": -22.18,
+        "lng": 134.62,
+        "weight": 0.18
+      },
+      {
+        "lat": -24.85,
+        "lng": 137.28,
+        "weight": 0.15
+      },
+      {
+        "lat": -20.65,
+        "lng": 130.42,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "red_kangaroo",
@@ -162,14 +443,65 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "红袋鼠是世界上最大的有袋动物，一跳可以飞出9米远。它们遍布澳大利亚内陆，是这片红色大地上最具标志性的居民。",
-    "illustration": "/assets/species/red-kangaroo-illustration.svg",
-    "photo": "/assets/species/red-kangaroo-photo.jpg",
-    "audio": "/assets/audio/red-kangaroo.mp3",
     "color": "#c97040",
     "geoPoint": {
       "lng": 121.5,
       "lat": -27.5
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -25.97,
+        "lng": 134.76,
+        "weight": 0.22
+      },
+      {
+        "lat": -29.72,
+        "lng": 141.35,
+        "weight": 0.18
+      },
+      {
+        "lat": -23.45,
+        "lng": 138.92,
+        "weight": 0.16
+      },
+      {
+        "lat": -31.28,
+        "lng": 148.65,
+        "weight": 0.16
+      },
+      {
+        "lat": -27.82,
+        "lng": 125.42,
+        "weight": 0.14
+      },
+      {
+        "lat": -20.55,
+        "lng": 134.18,
+        "weight": 0.14
+      }
+    ]
   },
   {
     "id": "emu",
@@ -189,14 +521,65 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "鸸鹋是世界第二大鸟，不会飞但跑得飞快。1932年澳大利亚军队曾对鸸鹋发动过一场'战争'——结果鸸鹋赢了。它们和袋鼠一起出现在澳大利亚国徽上。",
-    "illustration": "/assets/species/emu-illustration.svg",
-    "photo": "/assets/species/emu-photo.jpg",
-    "audio": "/assets/audio/emu.mp3",
     "color": "#b8a88a",
     "geoPoint": {
       "lng": 118.5,
       "lat": -30.5
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -28.34,
+        "lng": 138.62,
+        "weight": 0.2
+      },
+      {
+        "lat": -32.18,
+        "lng": 148.58,
+        "weight": 0.18
+      },
+      {
+        "lat": -25.42,
+        "lng": 143.25,
+        "weight": 0.16
+      },
+      {
+        "lat": -30.85,
+        "lng": 121.88,
+        "weight": 0.16
+      },
+      {
+        "lat": -22.68,
+        "lng": 134.42,
+        "weight": 0.15
+      },
+      {
+        "lat": -35.12,
+        "lng": 140.65,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "echidna",
@@ -217,14 +600,65 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "针鼹和鸭嘴兽是世界上仅有的两种产卵哺乳动物。遇到危险时，它会把自己卷成一个刺球，像一个行走的仙人掌。它们分布在澳大利亚的每一个角落。",
-    "illustration": "/assets/species/echidna-illustration.svg",
-    "photo": "/assets/species/echidna-photo.jpg",
-    "audio": "/assets/audio/echidna.mp3",
     "color": "#d4b98a",
     "geoPoint": {
       "lng": 116,
       "lat": -33.5
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -33.48,
+        "lng": 146.12,
+        "weight": 0.2
+      },
+      {
+        "lat": -27.82,
+        "lng": 152.35,
+        "weight": 0.18
+      },
+      {
+        "lat": -37.72,
+        "lng": 144.95,
+        "weight": 0.16
+      },
+      {
+        "lat": -42.15,
+        "lng": 146.48,
+        "weight": 0.16
+      },
+      {
+        "lat": -31.45,
+        "lng": 136.28,
+        "weight": 0.15
+      },
+      {
+        "lat": -24.68,
+        "lng": 133.82,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "kookaburra",
@@ -243,14 +677,60 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "每天清晨，笑翠鸟会用它标志性的'哈哈哈'大笑声唤醒整片丛林。这种声音已经成为澳大利亚的声音名片，在无数电影中被用作'丛林背景音'。",
-    "illustration": "/assets/species/kookaburra-illustration.svg",
-    "photo": "/assets/species/kookaburra-photo.jpg",
-    "audio": "/assets/audio/kookaburra.mp3",
     "color": "#64ba9c",
     "geoPoint": {
       "lng": 145.77,
       "lat": -16.92
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -33.87,
+        "lng": 150.89,
+        "weight": 0.28
+      },
+      {
+        "lat": -27.48,
+        "lng": 152.98,
+        "weight": 0.22
+      },
+      {
+        "lat": -37.82,
+        "lng": 145.12,
+        "weight": 0.2
+      },
+      {
+        "lat": -35.28,
+        "lng": 149.12,
+        "weight": 0.18
+      },
+      {
+        "lat": -31.42,
+        "lng": 152.45,
+        "weight": 0.12
+      }
+    ]
   },
   {
     "id": "frilled_lizard",
@@ -267,14 +747,60 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "受到威胁时，伞蜥会张开脖子上巨大的褶皱，像撑开一把伞，同时张大嘴巴发出嘶嘶声。这个戏剧性的防御姿态让它成为澳大利亚最上镜的爬行动物。",
-    "illustration": "/assets/species/frilled-lizard-illustration.svg",
-    "photo": "/assets/species/frilled-lizard-photo.jpg",
-    "audio": "/assets/audio/frilled-lizard.mp3",
     "color": "#eba882",
     "geoPoint": {
       "lng": 132.8,
       "lat": -12.7
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -14.82,
+        "lng": 132.47,
+        "weight": 0.3
+      },
+      {
+        "lat": -16.92,
+        "lng": 145.72,
+        "weight": 0.22
+      },
+      {
+        "lat": -19.28,
+        "lng": 134.58,
+        "weight": 0.18
+      },
+      {
+        "lat": -13.45,
+        "lng": 130.85,
+        "weight": 0.15
+      },
+      {
+        "lat": -22.15,
+        "lng": 131.28,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "cane_toad",
@@ -292,15 +818,66 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "1935年，102只甘蔗蟾蜍被从夏威夷引入昆士兰来控制甘蔗害虫。它们没有吃害虫，却以惊人的速度向西扩张，如今已超过20亿只，成为澳大利亚最臭名昭著的入侵物种。",
-    "illustration": "/assets/species/cane-toad-illustration.svg",
-    "photo": "/assets/species/cane-toad-photo.jpg",
-    "audio": "/assets/audio/cane-toad.mp3",
     "color": "#7a6b52",
     "introYear": 1935,
     "geoPoint": {
       "lng": 145.75,
       "lat": -17
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "CSIRO",
+        "note": "用于核对入侵物种在澳大利亚生态中的影响说明。",
+        "url": "https://www.csiro.au/"
+      },
+      {
+        "label": "DCCEEW",
+        "note": "用于核对澳大利亚环境与生物安全背景信息。",
+        "url": "https://www.dcceew.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -16.92,
+        "lng": 145.77,
+        "weight": 0.25
+      },
+      {
+        "lat": -19.28,
+        "lng": 146.82,
+        "weight": 0.22
+      },
+      {
+        "lat": -27.47,
+        "lng": 153.02,
+        "weight": 0.2
+      },
+      {
+        "lat": -23.85,
+        "lng": 151.28,
+        "weight": 0.15
+      },
+      {
+        "lat": -12.45,
+        "lng": 130.85,
+        "weight": 0.1
+      },
+      {
+        "lat": -15.72,
+        "lng": 128.42,
+        "weight": 0.08
+      }
+    ]
   },
   {
     "id": "european_rabbit",
@@ -320,15 +897,66 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "1859年，一位英国移民在维多利亚州放出了24只兔子用于狩猎。十年后，兔子数量已达数百万。它们啃光了草地，挖空了土壤，成为澳大利亚生态史上最具破坏力的入侵者之一。",
-    "illustration": "/assets/species/european-rabbit-illustration.svg",
-    "photo": "/assets/species/european-rabbit-photo.jpg",
-    "audio": "/assets/audio/european-rabbit.mp3",
     "color": "#d1c4a9",
     "introYear": 1859,
     "geoPoint": {
       "lng": 144.7,
       "lat": -36.8
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "CSIRO",
+        "note": "用于核对入侵物种在澳大利亚生态中的影响说明。",
+        "url": "https://www.csiro.au/"
+      },
+      {
+        "label": "DCCEEW",
+        "note": "用于核对澳大利亚环境与生物安全背景信息。",
+        "url": "https://www.dcceew.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -33.42,
+        "lng": 143.28,
+        "weight": 0.2
+      },
+      {
+        "lat": -35.82,
+        "lng": 149.12,
+        "weight": 0.18
+      },
+      {
+        "lat": -31.45,
+        "lng": 136.85,
+        "weight": 0.16
+      },
+      {
+        "lat": -37.82,
+        "lng": 144.95,
+        "weight": 0.16
+      },
+      {
+        "lat": -29.72,
+        "lng": 148.62,
+        "weight": 0.15
+      },
+      {
+        "lat": -34.18,
+        "lng": 118.58,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "dingo",
@@ -347,14 +975,65 @@
     "dangerStatus": "VU",
     "soundType": "real",
     "story": "大约4000年前，野犬随东南亚航海者来到澳大利亚。它们是澳大利亚大陆上最大的陆地掠食者，与原住民文化有着深厚的联系，但也因捕食家畜而备受争议。",
-    "illustration": "/assets/species/dingo-illustration.svg",
-    "photo": "/assets/species/dingo-photo.jpg",
-    "audio": "/assets/audio/dingo.mp3",
     "color": "#e0c99a",
     "geoPoint": {
       "lng": 122,
       "lat": -18.5
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "CSIRO",
+        "note": "用于核对入侵物种在澳大利亚生态中的影响说明。",
+        "url": "https://www.csiro.au/"
+      },
+      {
+        "label": "DCCEEW",
+        "note": "用于核对澳大利亚环境与生物安全背景信息。",
+        "url": "https://www.dcceew.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -24.18,
+        "lng": 134.21,
+        "weight": 0.22
+      },
+      {
+        "lat": -19.28,
+        "lng": 134.12,
+        "weight": 0.2
+      },
+      {
+        "lat": -28.45,
+        "lng": 148.85,
+        "weight": 0.18
+      },
+      {
+        "lat": -32.72,
+        "lng": 141.28,
+        "weight": 0.15
+      },
+      {
+        "lat": -22.85,
+        "lng": 122.42,
+        "weight": 0.15
+      },
+      {
+        "lat": -16.42,
+        "lng": 145.28,
+        "weight": 0.1
+      }
+    ]
   },
   {
     "id": "red_fox",
@@ -374,15 +1053,66 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "1855年为了狩猎运动被引入澳大利亚的赤狐，迅速成为本土小型哺乳动物的噩梦。它们是导致多种澳大利亚本土物种灭绝的主要原因之一。",
-    "illustration": "/assets/species/red-fox-illustration.svg",
-    "photo": "/assets/species/red-fox-photo.jpg",
-    "audio": "/assets/audio/red-fox.mp3",
     "color": "#c97040",
     "introYear": 1855,
     "geoPoint": {
       "lng": 145.5,
       "lat": -37.1
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "CSIRO",
+        "note": "用于核对入侵物种在澳大利亚生态中的影响说明。",
+        "url": "https://www.csiro.au/"
+      },
+      {
+        "label": "DCCEEW",
+        "note": "用于核对澳大利亚环境与生物安全背景信息。",
+        "url": "https://www.dcceew.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -37.81,
+        "lng": 144.96,
+        "weight": 0.22
+      },
+      {
+        "lat": -33.87,
+        "lng": 151.21,
+        "weight": 0.2
+      },
+      {
+        "lat": -35.28,
+        "lng": 149.12,
+        "weight": 0.18
+      },
+      {
+        "lat": -34.92,
+        "lng": 138.62,
+        "weight": 0.15
+      },
+      {
+        "lat": -31.95,
+        "lng": 115.86,
+        "weight": 0.13
+      },
+      {
+        "lat": -42.15,
+        "lng": 146.82,
+        "weight": 0.12
+      }
+    ]
   },
   {
     "id": "southern_right_whale",
@@ -400,15 +1130,61 @@
     "dangerStatus": "LC",
     "soundType": "real",
     "story": "它们被叫做'对的鲸鱼'，因为捕鲸者认为它们游得慢、油脂多、死后会浮起来——是'正确的'捕猎目标。经历了近乎灭绝的浩劫后，南露脊鲸正在缓慢恢复。",
-    "illustration": "/assets/species/southern-right-whale-illustration.svg",
-    "photo": "/assets/species/southern-right-whale-photo.jpg",
-    "audio": "/assets/audio/southern-right-whale.mp3",
     "color": "#6cb3d9",
     "migratory": true,
     "geoPoint": {
       "lng": 133.7,
       "lat": -32.13
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -35.78,
+        "lng": 138.52,
+        "weight": 0.25
+      },
+      {
+        "lat": -34.82,
+        "lng": 117.65,
+        "weight": 0.22
+      },
+      {
+        "lat": -38.42,
+        "lng": 141.28,
+        "weight": 0.2
+      },
+      {
+        "lat": -43.28,
+        "lng": 147.35,
+        "weight": 0.18
+      },
+      {
+        "lat": -33.18,
+        "lng": 151.82,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "great_white_shark",
@@ -426,15 +1202,61 @@
     "dangerStatus": "VU",
     "soundType": "ai_simulated",
     "story": "大白鲨是海洋中的顶级掠食者，可以感知数公里外的一滴血。在澳大利亚水域，它们沿着海岸线巡游，维持着海洋生态系统的平衡。",
-    "illustration": "/assets/species/great-white-shark-illustration.svg",
-    "photo": "/assets/species/great-white-shark-photo.jpg",
-    "audio": "/assets/audio/great-white-shark.mp3",
     "color": "#9ec3d8",
     "migratory": true,
     "geoPoint": {
       "lng": 137.6,
       "lat": -34.6
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -34.92,
+        "lng": 136.72,
+        "weight": 0.25
+      },
+      {
+        "lat": -33.85,
+        "lng": 151.28,
+        "weight": 0.22
+      },
+      {
+        "lat": -37.82,
+        "lng": 140.12,
+        "weight": 0.2
+      },
+      {
+        "lat": -35.42,
+        "lng": 117.88,
+        "weight": 0.18
+      },
+      {
+        "lat": -43.15,
+        "lng": 147.42,
+        "weight": 0.15
+      }
+    ]
   },
   {
     "id": "green_sea_turtle",
@@ -451,14 +1273,790 @@
     "dangerStatus": "EN",
     "soundType": "ai_simulated",
     "story": "绿海龟每年会游数千公里回到出生的海滩产卵。大堡礁是它们最重要的栖息地之一，但海水温度上升正在威胁着这些古老旅者的未来。",
-    "illustration": "/assets/species/green-sea-turtle-illustration.svg",
-    "photo": "/assets/species/green-sea-turtle-photo.jpg",
-    "audio": "/assets/audio/green-sea-turtle.mp3",
     "color": "#64ba9c",
     "migratory": true,
     "geoPoint": {
       "lng": 147.33,
       "lat": -20.27
-    }
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -18.42,
+        "lng": 149.12,
+        "weight": 0.28
+      },
+      {
+        "lat": -23.45,
+        "lng": 151.88,
+        "weight": 0.22
+      },
+      {
+        "lat": -14.68,
+        "lng": 145.45,
+        "weight": 0.2
+      },
+      {
+        "lat": -12.42,
+        "lng": 130.82,
+        "weight": 0.15
+      },
+      {
+        "lat": -21.75,
+        "lng": 114.18,
+        "weight": 0.15
+      }
+    ]
+  },
+  {
+    "id": "gastric_brooding_frog",
+    "nameZh": "胃育溪蛙",
+    "nameEn": "Southern Gastric-brooding Frog",
+    "scientificName": "Rheobatrachus silus",
+    "group": "extinct",
+    "groupLabel": "已灭绝 / 消失的挽歌",
+    "states": [
+      "qld"
+    ],
+    "dangerStatus": "EX",
+    "soundType": "ai_simulated",
+    "story": "这种蛙以胃孕育后代：雌蛙吞下受精卵，暂停消化系统长达六周，待幼蛙成形后从口中'诞生'。1983年，最后一只胃育溪蛙在昆士兰雨林中悄然消失，带走了自然界这一独一无二的生命奇迹。",
+    "color": "#6b8c6b",
+    "extinctYear": 1983,
+    "geoPoint": {
+      "lng": 152.8,
+      "lat": -26.5
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对全球保护状态与灭绝结论。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对澳大利亚历史物种档案与图文背景。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -26.42,
+        "lng": 152.82,
+        "weight": 0.38
+      },
+      {
+        "lat": -27.15,
+        "lng": 153.05,
+        "weight": 0.28
+      },
+      {
+        "lat": -25.88,
+        "lng": 152.48,
+        "weight": 0.2
+      },
+      {
+        "lat": -26.98,
+        "lng": 152.28,
+        "weight": 0.14
+      }
+    ]
+  },
+  {
+    "id": "northern_quoll",
+    "nameZh": "北部袋鼬",
+    "nameEn": "Northern Quoll",
+    "scientificName": "Dasyurus hallucatus",
+    "group": "endangered",
+    "groupLabel": "濒危与脆弱的国宝",
+    "states": [
+      "nt",
+      "qld",
+      "wa"
+    ],
+    "dangerStatus": "EN",
+    "soundType": "real",
+    "story": "北部袋鼬是澳大利亚最小的猫型有袋动物之一，行动敏捷、凶猛过人。然而自甘蔗蟾蜍入侵后，它们的数量急剧崩溃——蟾蜍的毒素让袋鼬一口毙命，种群至今仍在生死线上挣扎。",
+    "color": "#c4855a",
+    "geoPoint": {
+      "lng": 131.0,
+      "lat": -13.5
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -13.82,
+        "lng": 131.98,
+        "weight": 0.28
+      },
+      {
+        "lat": -16.47,
+        "lng": 136.22,
+        "weight": 0.22
+      },
+      {
+        "lat": -19.28,
+        "lng": 146.82,
+        "weight": 0.18
+      },
+      {
+        "lat": -14.55,
+        "lng": 128.72,
+        "weight": 0.17
+      },
+      {
+        "lat": -22.92,
+        "lng": 114.12,
+        "weight": 0.15
+      }
+    ]
+  },
+  {
+    "id": "orange_bellied_parrot",
+    "nameZh": "橙腹鹦鹉",
+    "nameEn": "Orange-bellied Parrot",
+    "scientificName": "Neophema chrysogaster",
+    "group": "endangered",
+    "groupLabel": "濒危与脆弱的国宝",
+    "states": [
+      "tas",
+      "vic",
+      "sa"
+    ],
+    "dangerStatus": "CR",
+    "soundType": "real",
+    "story": "橙腹鹦鹉是世界上最濒危的鸟类之一，野外种群一度跌至不足20只。它们每年在塔斯马尼亚繁殖、飞越巴斯海峡越冬，迁徙路线上每一处栖息地的丢失都是一次迈向灭绝的脚步。",
+    "color": "#f5c842",
+    "geoPoint": {
+      "lng": 145.0,
+      "lat": -43.2
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "BirdLife Australia",
+        "note": "用于核对鸟类物种保护状态与分布信息。",
+        "url": "https://birdlife.org.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -43.18,
+        "lng": 145.82,
+        "weight": 0.32
+      },
+      {
+        "lat": -42.85,
+        "lng": 147.48,
+        "weight": 0.25
+      },
+      {
+        "lat": -38.42,
+        "lng": 141.28,
+        "weight": 0.2
+      },
+      {
+        "lat": -35.42,
+        "lng": 138.72,
+        "weight": 0.13
+      },
+      {
+        "lat": -41.82,
+        "lng": 148.22,
+        "weight": 0.1
+      }
+    ]
+  },
+  {
+    "id": "saltwater_crocodile",
+    "nameZh": "湾鳄",
+    "nameEn": "Saltwater Crocodile",
+    "scientificName": "Crocodylus porosus",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "nt",
+      "qld",
+      "wa"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "湾鳄是地球上最大的现存爬行动物，可以长到6米、重逾1000公斤。它们在澳大利亚北部的河口与海岸静静潜伏，祖先与恐龙共存，而今依然健在。曾因猎杀濒临灭绝，受保护后数量已大幅恢复。",
+    "color": "#5e7a5a",
+    "geoPoint": {
+      "lng": 132.5,
+      "lat": -13.0
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -12.88,
+        "lng": 132.48,
+        "weight": 0.3
+      },
+      {
+        "lat": -16.92,
+        "lng": 139.42,
+        "weight": 0.24
+      },
+      {
+        "lat": -14.55,
+        "lng": 128.85,
+        "weight": 0.2
+      },
+      {
+        "lat": -19.28,
+        "lng": 146.82,
+        "weight": 0.15
+      },
+      {
+        "lat": -12.42,
+        "lng": 143.12,
+        "weight": 0.11
+      }
+    ]
+  },
+  {
+    "id": "thorny_devil",
+    "nameZh": "刺魔蜥",
+    "nameEn": "Thorny Devil",
+    "scientificName": "Moloch horridus",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "ai_simulated",
+    "story": "全身覆盖锐刺的刺魔蜥是沙漠中的生存奇迹——它用皮肤上的微小沟槽收集清晨露水，让水分顺毛细作用直达嘴边。每天只吃蚂蚁，一次最多能吞下3000只。",
+    "color": "#c8994a",
+    "geoPoint": {
+      "lng": 125.5,
+      "lat": -25.8
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -25.82,
+        "lng": 125.48,
+        "weight": 0.28
+      },
+      {
+        "lat": -29.15,
+        "lng": 122.35,
+        "weight": 0.22
+      },
+      {
+        "lat": -23.42,
+        "lng": 132.88,
+        "weight": 0.2
+      },
+      {
+        "lat": -31.48,
+        "lng": 128.62,
+        "weight": 0.17
+      },
+      {
+        "lat": -22.85,
+        "lng": 119.42,
+        "weight": 0.13
+      }
+    ]
+  },
+  {
+    "id": "wedge_tailed_eagle",
+    "nameZh": "楔尾鹰",
+    "nameEn": "Wedge-tailed Eagle",
+    "scientificName": "Aquila audax",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld",
+      "nsw",
+      "vic",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "楔尾鹰是澳大利亚最大的猛禽，翼展可达2.3米。它们从不主动避让——甚至有与小型飞机相撞的案例。高空翱翔时，它们能看清数公里外的猎物，是内陆天空真正的霸主。",
+    "color": "#4a3828",
+    "geoPoint": {
+      "lng": 133.0,
+      "lat": -25.0
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "BirdLife Australia",
+        "note": "用于核对鸟类物种保护状态与分布信息。",
+        "url": "https://birdlife.org.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -25.42,
+        "lng": 132.88,
+        "weight": 0.2
+      },
+      {
+        "lat": -29.72,
+        "lng": 141.35,
+        "weight": 0.18
+      },
+      {
+        "lat": -33.42,
+        "lng": 148.62,
+        "weight": 0.16
+      },
+      {
+        "lat": -22.68,
+        "lng": 121.42,
+        "weight": 0.16
+      },
+      {
+        "lat": -37.82,
+        "lng": 144.95,
+        "weight": 0.15
+      },
+      {
+        "lat": -19.28,
+        "lng": 135.42,
+        "weight": 0.15
+      }
+    ]
+  },
+  {
+    "id": "eastern_grey_kangaroo",
+    "nameZh": "东部灰袋鼠",
+    "nameEn": "Eastern Grey Kangaroo",
+    "scientificName": "Macropus giganteus",
+    "group": "native",
+    "groupLabel": "广泛分布的土著",
+    "states": [
+      "qld",
+      "nsw",
+      "vic",
+      "sa",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "东部灰袋鼠是澳大利亚城郊最常见的大型有袋动物，种群数量超过1500万只。清晨和黄昏，它们成群出现在草地上，是无数澳大利亚人童年记忆中最熟悉的野生动物。",
+    "color": "#a0a080",
+    "geoPoint": {
+      "lng": 151.5,
+      "lat": -29.0
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -28.42,
+        "lng": 151.88,
+        "weight": 0.24
+      },
+      {
+        "lat": -33.87,
+        "lng": 150.42,
+        "weight": 0.2
+      },
+      {
+        "lat": -37.82,
+        "lng": 145.12,
+        "weight": 0.18
+      },
+      {
+        "lat": -23.85,
+        "lng": 151.28,
+        "weight": 0.16
+      },
+      {
+        "lat": -35.28,
+        "lng": 149.12,
+        "weight": 0.12
+      },
+      {
+        "lat": -41.42,
+        "lng": 146.18,
+        "weight": 0.1
+      }
+    ]
+  },
+  {
+    "id": "feral_cat",
+    "nameZh": "野化家猫",
+    "nameEn": "Feral Cat",
+    "scientificName": "Felis catus",
+    "group": "invasive",
+    "groupLabel": "外来入侵与扩张史",
+    "states": [
+      "wa",
+      "sa",
+      "nt",
+      "qld",
+      "nsw",
+      "vic",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "随欧洲移民到来的家猫很快野化，如今澳大利亚约有600万只野猫遍布每一寸土地。每只野猫每年平均捕杀超过700只本土动物，它们是导致澳大利亚本土鸟类和哺乳动物灭绝数量最多的单一物种。",
+    "color": "#b8a890",
+    "introYear": 1788,
+    "geoPoint": {
+      "lng": 133.0,
+      "lat": -26.0
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "CSIRO",
+        "note": "用于核对入侵物种在澳大利亚生态中的影响说明。",
+        "url": "https://www.csiro.au/"
+      },
+      {
+        "label": "DCCEEW",
+        "note": "用于核对澳大利亚环境与生物安全背景信息。",
+        "url": "https://www.dcceew.gov.au/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -25.42,
+        "lng": 132.88,
+        "weight": 0.18
+      },
+      {
+        "lat": -29.72,
+        "lng": 141.35,
+        "weight": 0.17
+      },
+      {
+        "lat": -33.87,
+        "lng": 150.42,
+        "weight": 0.15
+      },
+      {
+        "lat": -37.82,
+        "lng": 144.95,
+        "weight": 0.15
+      },
+      {
+        "lat": -22.68,
+        "lng": 121.42,
+        "weight": 0.13
+      },
+      {
+        "lat": -42.15,
+        "lng": 146.82,
+        "weight": 0.12
+      },
+      {
+        "lat": -15.72,
+        "lng": 130.42,
+        "weight": 0.1
+      }
+    ]
+  },
+  {
+    "id": "dugong",
+    "nameZh": "儒艮",
+    "nameEn": "Dugong",
+    "scientificName": "Dugong dugon",
+    "group": "marine",
+    "groupLabel": "海洋与迁徙的旅者",
+    "states": [
+      "qld",
+      "wa",
+      "nt"
+    ],
+    "dangerStatus": "VU",
+    "soundType": "real",
+    "story": "儒艮是唯一完全以植物为食的海洋哺乳动物，它们成群在海草床中悠缓觅食，古代水手误以为是美人鱼。澳大利亚拥有全球最大的儒艮种群，但大规模的海草消失令种群前景堪忧。",
+    "color": "#7ab8c8",
+    "migratory": false,
+    "geoPoint": {
+      "lng": 139.5,
+      "lat": -17.8
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -16.92,
+        "lng": 139.48,
+        "weight": 0.28
+      },
+      {
+        "lat": -18.42,
+        "lng": 149.12,
+        "weight": 0.22
+      },
+      {
+        "lat": -12.42,
+        "lng": 130.82,
+        "weight": 0.2
+      },
+      {
+        "lat": -22.15,
+        "lng": 114.08,
+        "weight": 0.17
+      },
+      {
+        "lat": -24.88,
+        "lng": 151.85,
+        "weight": 0.13
+      }
+    ]
+  },
+  {
+    "id": "humpback_whale",
+    "nameZh": "座头鲸",
+    "nameEn": "Humpback Whale",
+    "scientificName": "Megaptera novaeangliae",
+    "group": "marine",
+    "groupLabel": "海洋与迁徙的旅者",
+    "states": [
+      "wa",
+      "qld",
+      "nsw",
+      "vic",
+      "tas"
+    ],
+    "dangerStatus": "LC",
+    "soundType": "real",
+    "story": "座头鲸每年在南极与澳大利亚温暖海域之间往返迁徙，行程长达16000公里。雄鲸会唱出持续数小时、不断演化的歌曲，在整个大洋中传递。经历20世纪捕鲸业的毁灭性打击，它们的数量正在奇迹般地恢复。",
+    "color": "#4a6d8c",
+    "migratory": true,
+    "geoPoint": {
+      "lng": 151.5,
+      "lat": -25.0
+    },
+    "assetStatus": "placeholder",
+    "reviewStatus": "reviewed",
+    "media": {
+      "illustration": "",
+      "photo": "",
+      "audio": ""
+    },
+    "sources": [
+      {
+        "label": "IUCN Red List",
+        "note": "用于核对保护等级、威胁与恢复背景。",
+        "url": "https://www.iucnredlist.org/"
+      },
+      {
+        "label": "Australian Museum",
+        "note": "用于核对物种基础科普信息与澳洲语境下的解读。",
+        "url": "https://australian.museum/"
+      }
+    ],
+    "funFacts": [],
+    "storyNarrative": "",
+    "timelineNarratives": {},
+    "distributionPoints": [
+      {
+        "lat": -24.85,
+        "lng": 152.42,
+        "weight": 0.25
+      },
+      {
+        "lat": -20.42,
+        "lng": 116.88,
+        "weight": 0.22
+      },
+      {
+        "lat": -33.85,
+        "lng": 151.28,
+        "weight": 0.2
+      },
+      {
+        "lat": -38.42,
+        "lng": 141.28,
+        "weight": 0.18
+      },
+      {
+        "lat": -27.42,
+        "lng": 153.52,
+        "weight": 0.15
+      }
+    ]
   }
 ]

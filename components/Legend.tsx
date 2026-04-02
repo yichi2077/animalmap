@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const GROUPS = [
-  { key: "extinct", label: "已灭绝", color: "#8a7e6d", icon: "◇" },
-  { key: "endangered", label: "濒危", color: "#e08a58", icon: "★" },
-  { key: "native", label: "本土物种", color: "#7da56c", icon: "♥" },
-  { key: "invasive", label: "入侵物种", color: "#c97040", icon: "✦" },
-  { key: "marine", label: "海洋物种", color: "#6cb3d9", icon: "◎" },
+  { key: "extinct", label: "已灭绝", color: "var(--earth-light)", icon: "◇" },
+  { key: "endangered", label: "濒危", color: "var(--coral)", icon: "★" },
+  { key: "native", label: "本土物种", color: "var(--leaf)", icon: "♥" },
+  { key: "invasive", label: "入侵物种", color: "var(--clay)", icon: "✦" },
+  { key: "marine", label: "海洋物种", color: "var(--lagoon)", icon: "◎" },
 ];
 
 export default function Legend() {

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { AtlasProvider } from "@/contexts/AtlasContext";
+import { ExtendedSpeciesProvider } from "@/contexts/ExtendedSpeciesContext";
 import MapStage from "@/components/MapStage";
 import TopOverlay from "@/components/TopOverlay";
 import TimelineBar from "@/components/TimelineBar";
@@ -12,17 +13,19 @@ import IntroSequence from "@/components/IntroSequence";
 export default function Home() {
   return (
     <AtlasProvider>
-      <main className="atlas-shell relative isolate w-screen h-screen overflow-hidden">
-        <div aria-hidden className="atlas-glow atlas-glow-left" />
-        <div aria-hidden className="atlas-glow atlas-glow-right" />
-        <div aria-hidden className="atlas-glow atlas-glow-bottom" />
-        <MapStage />
-        <TopOverlay />
-        <InfoPanel />
-        <Legend />
-        <TimelineBar />
-        <IntroSequence />
-      </main>
+      <ExtendedSpeciesProvider>
+        <main className="atlas-shell relative isolate w-screen h-screen overflow-hidden">
+          <div aria-hidden className="atlas-glow atlas-glow-left" />
+          <div aria-hidden className="atlas-glow atlas-glow-right" />
+          <div aria-hidden className="atlas-glow atlas-glow-bottom" />
+          <MapStage />
+          <TopOverlay />
+          <InfoPanel />
+          <Legend />
+          <TimelineBar />
+          <IntroSequence />
+        </main>
+      </ExtendedSpeciesProvider>
     </AtlasProvider>
   );
 }

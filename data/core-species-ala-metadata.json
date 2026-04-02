@@ -1,0 +1,234 @@
+{
+  "generatedAt": "2026-04-02T10:29:30.969Z",
+  "source": "ALA australia-only audit",
+  "yearRange": {
+    "from": 1770,
+    "to": 2024
+  },
+  "species": {
+    "thylacine": {
+      "firstAustralianObservedYear": 1866,
+      "firstReliableAustralianYear": 1897,
+      "recommendedIntroYear": 1897,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "pig_footed_bandicoot": {
+      "firstAustralianObservedYear": 1836,
+      "firstReliableAustralianYear": 1857,
+      "recommendedIntroYear": 1857,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "koala": {
+      "firstAustralianObservedYear": 1840,
+      "firstReliableAustralianYear": 1840,
+      "recommendedIntroYear": 1840,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "platypus": {
+      "firstAustralianObservedYear": 1800,
+      "firstReliableAustralianYear": 1839,
+      "recommendedIntroYear": 1839,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "tasmanian_devil": {
+      "firstAustralianObservedYear": 1893,
+      "firstReliableAustralianYear": 1905,
+      "recommendedIntroYear": 1905,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "bilby": {
+      "firstAustralianObservedYear": 1844,
+      "firstReliableAustralianYear": 1853,
+      "recommendedIntroYear": 1853,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "red_kangaroo": {
+      "firstAustralianObservedYear": 1844,
+      "firstReliableAustralianYear": 1921,
+      "recommendedIntroYear": 1921,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "emu": {
+      "firstAustralianObservedYear": 1788,
+      "firstReliableAustralianYear": 1788,
+      "recommendedIntroYear": 1788,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "echidna": {
+      "firstAustralianObservedYear": 1840,
+      "firstReliableAustralianYear": 1880,
+      "recommendedIntroYear": 1880,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "kookaburra": {
+      "firstAustralianObservedYear": null,
+      "firstReliableAustralianYear": null,
+      "recommendedIntroYear": null,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "missing"
+    },
+    "frilled_lizard": {
+      "firstAustralianObservedYear": 1871,
+      "firstReliableAustralianYear": 1897,
+      "recommendedIntroYear": 1897,
+      "effectiveIntroYear": 1897,
+      "provenance": "ala_yearly",
+      "auditRisk": "usable"
+    },
+    "cane_toad": {
+      "firstAustralianObservedYear": 1935,
+      "firstReliableAustralianYear": 1935,
+      "recommendedIntroYear": 1935,
+      "effectiveIntroYear": 1935,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "european_rabbit": {
+      "firstAustralianObservedYear": 1824,
+      "firstReliableAustralianYear": 1895,
+      "recommendedIntroYear": 1895,
+      "effectiveIntroYear": 1859,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "dingo": {
+      "firstAustralianObservedYear": null,
+      "firstReliableAustralianYear": null,
+      "recommendedIntroYear": null,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "missing"
+    },
+    "red_fox": {
+      "firstAustralianObservedYear": 1870,
+      "firstReliableAustralianYear": 1904,
+      "recommendedIntroYear": 1904,
+      "effectiveIntroYear": 1855,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "southern_right_whale": {
+      "firstAustralianObservedYear": 1790,
+      "firstReliableAustralianYear": 1861,
+      "recommendedIntroYear": 1861,
+      "effectiveIntroYear": 1861,
+      "provenance": "ala_yearly",
+      "auditRisk": "usable"
+    },
+    "great_white_shark": {
+      "firstAustralianObservedYear": 1885,
+      "firstReliableAustralianYear": 1885,
+      "recommendedIntroYear": 1885,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "green_sea_turtle": {
+      "firstAustralianObservedYear": 1892,
+      "firstReliableAustralianYear": 1909,
+      "recommendedIntroYear": 1909,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "gastric_brooding_frog": {
+      "firstAustralianObservedYear": 1915,
+      "firstReliableAustralianYear": 1968,
+      "recommendedIntroYear": 1968,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "northern_quoll": {
+      "firstAustralianObservedYear": 1882,
+      "firstReliableAustralianYear": 1907,
+      "recommendedIntroYear": 1907,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "orange_bellied_parrot": {
+      "firstAustralianObservedYear": null,
+      "firstReliableAustralianYear": null,
+      "recommendedIntroYear": null,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "missing"
+    },
+    "saltwater_crocodile": {
+      "firstAustralianObservedYear": 1860,
+      "firstReliableAustralianYear": 1876,
+      "recommendedIntroYear": 1876,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "thorny_devil": {
+      "firstAustralianObservedYear": 1889,
+      "firstReliableAustralianYear": 1889,
+      "recommendedIntroYear": 1889,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "wedge_tailed_eagle": {
+      "firstAustralianObservedYear": null,
+      "firstReliableAustralianYear": null,
+      "recommendedIntroYear": null,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "missing"
+    },
+    "eastern_grey_kangaroo": {
+      "firstAustralianObservedYear": 1839,
+      "firstReliableAustralianYear": 1878,
+      "recommendedIntroYear": 1878,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "feral_cat": {
+      "firstAustralianObservedYear": 1875,
+      "firstReliableAustralianYear": 1926,
+      "recommendedIntroYear": 1926,
+      "effectiveIntroYear": 1788,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "dugong": {
+      "firstAustralianObservedYear": 1874,
+      "firstReliableAustralianYear": 1944,
+      "recommendedIntroYear": 1944,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    },
+    "humpback_whale": {
+      "firstAustralianObservedYear": 1836,
+      "firstReliableAustralianYear": 1921,
+      "recommendedIntroYear": 1921,
+      "effectiveIntroYear": null,
+      "provenance": "curated_historical",
+      "auditRisk": "usable"
+    }
+  }
+}

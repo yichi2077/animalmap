@@ -1,31 +1,48 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useAtlas } from "@/contexts/AtlasContext";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function IntroSequence() {
-  const { hasSeenIntro, markIntroSeen } = useAtlas();
+  const { hasSeenIntro, isMapReady, markIntroSeen } = useAtlas();
   const [phase, setPhase] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     if (hasSeenIntro) return;
 
-    const timers = [
-      setTimeout(() => setPhase(1), 600),
-      setTimeout(() => setPhase(2), 2200),
-      setTimeout(() => setPhase(3), 4500),
-      setTimeout(() => setPhase(4), 7000),
-      setTimeout(() => {
-        setPhase(5);
-        markIntroSeen();
-      }, 9000),
-    ];
+    const timers = shouldReduceMotion
+      ? [
+          setTimeout(() => setPhase(1), 120),
+          setTimeout(() => setPhase(3), 900),
+          setTimeout(() => {
+            setPhase(5);
+            markIntroSeen();
+          }, 2200),
+        ]
+      : [
+          setTimeout(() => setPhase(1), 600),
+          setTimeout(() => setPhase(2), 2200),
+          setTimeout(() => setPhase(3), 4500),
+          setTimeout(() => setPhase(4), 7000),
+          setTimeout(() => {
+            setPhase(5);
+            markIntroSeen();
+          }, 9000),
+        ];
 
     return () => timers.forEach(clearTimeout);
-  }, [hasSeenIntro, markIntroSeen]);
+  }, [hasSeenIntro, markIntroSeen, shouldReduceMotion]);
 
   if (hasSeenIntro) return null;
+
+  const closingHint = isMapReady ? "即将开始..." : "底图加载中...";
+  const subtitleLines = isMapReady
+    ? ["翻开这本绘本", "拖动时间，看见动物的故事"]
+    : ["翻开这本绘本", "地图正在铺开，请稍候"];
 
   return (
     <AnimatePresence>
@@ -36,10 +53,8 @@ export default function IntroSequence() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Paper texture overlay */}
           <div className="paper-texture absolute inset-0 pointer-events-none" />
 
-          {/* Book spine / fold line */}
           <motion.div
             className="absolute left-1/2 top-0 bottom-0 w-px"
             style={{ background: "var(--earth-light)", opacity: 0.3 }}
@@ -48,7 +63,6 @@ export default function IntroSequence() {
             transition={{ duration: 1.2, ease: "easeInOut" }}
           />
 
-          {/* Left page */}
           <motion.div
             className="absolute left-0 top-0 bottom-0 w-1/2 origin-right"
             style={{ background: "var(--parchment)" }}
@@ -64,7 +78,6 @@ export default function IntroSequence() {
             />
           </motion.div>
 
-          {/* Right page */}
           <motion.div
             className="absolute right-0 top-0 bottom-0 w-1/2 origin-left"
             style={{ background: "var(--parchment)" }}
@@ -80,7 +93,6 @@ export default function IntroSequence() {
             />
           </motion.div>
 
-          {/* Title text */}
           <div className="relative z-10 text-center px-8">
             <AnimatePresence mode="wait">
               {phase >= 1 && phase < 3 && (
@@ -138,13 +150,13 @@ export default function IntroSequence() {
                     className="text-base font-display leading-relaxed"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    翻开这本绘本
+                    {subtitleLines[0]}
                   </p>
                   <p
                     className="text-base font-display leading-relaxed mt-1"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    回到 1770 年的澳大利亚
+                    {subtitleLines[1]}
                   </p>
                   <motion.p
                     className="text-xs mt-4"
@@ -152,16 +164,15 @@ export default function IntroSequence() {
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    即将开始...
+                    {closingHint}
                   </motion.p>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          {/* Skip button */}
           <motion.button
-            className="absolute bottom-8 right-8 text-xs px-4 py-2 rounded-full z-20"
+            className={`absolute ${isMobile ? "bottom-8 left-1/2 -translate-x-1/2" : "bottom-8 right-8"} text-xs px-4 py-2 rounded-full z-20`}
             style={{
               background: "var(--parchment-dark)",
               color: "var(--warm-gray)",
@@ -173,6 +184,7 @@ export default function IntroSequence() {
               setPhase(5);
               markIntroSeen();
             }}
+            aria-label="跳过片头序章"
           >
             跳过
           </motion.button>
